@@ -15,7 +15,7 @@ public class LP_LeandroCorreia_RuiSilva {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        System.out.println("Bem-vindo à plataforma do Bingo");
     }
     
 }
