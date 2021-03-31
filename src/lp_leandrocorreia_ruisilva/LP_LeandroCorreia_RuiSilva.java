@@ -15,7 +15,9 @@ public class LP_LeandroCorreia_RuiSilva {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);     
+        Limpar l = new Limpar();
+        l.limparConsola();
         System.out.println("Bem-vindo à plataforma do Bingo\n");
         
         System.out.print("Press any key to continue...");
