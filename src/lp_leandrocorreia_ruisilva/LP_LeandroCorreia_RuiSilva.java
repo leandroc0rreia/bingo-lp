@@ -1,24 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package lp_leandrocorreia_ruisilva;
-
-/**
- *
- * @author Leandro Correia
- */
-public class LP_LeandroCorreia_RuiSilva {
-
-    /**
-     * @param args the command line arguments
-     */
+public class Main {
     public static void main(String[] args) {
-        
-        System.out.println("Bem-vindo à plataforma do Bingo");
-    
+        Scanner scn = new Scanner(System.in);
+        int tamanho;
+
+        System.out.print("Insira o tamanho da tabela ");
+        tamanho = scn.nextInt();
+
+        int[][] duasPos = new int[tamanho][tamanho];
+
+        for (int a = 0; a < duasPos.length; a++){
+            for(int b = 0; b < duasPos.length; b++){
+                System.out.print("Insira um numero para a posição " + a + "x" + b + " da tabela ");
+                duasPos[a][b]= scn.nextInt();
+            }
+        }
+
+        for (int[] colunas : duasPos){
+            for (int i : colunas) {
+                System.out.print(i);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
     }
-    
-    
 }
