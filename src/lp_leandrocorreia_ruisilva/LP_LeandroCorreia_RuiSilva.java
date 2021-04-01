@@ -42,6 +42,7 @@ public class LP_LeandroCorreia_RuiSilva {
                 case 1:
                     l.limparConsola();
                     
+                    j.sorteador();
                     j.numExt();
                     j.cartão();
                     sc.nextInt();
