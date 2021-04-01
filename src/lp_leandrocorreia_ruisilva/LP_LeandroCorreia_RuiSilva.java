@@ -17,6 +17,8 @@ public class LP_LeandroCorreia_RuiSilva {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);     
         Limpar l = new Limpar();
+        Jogo j = new Jogo();
+        
         l.limparConsola();
         System.out.println("Bem-vindo à plataforma do Bingo\n");
         
@@ -26,17 +28,21 @@ public class LP_LeandroCorreia_RuiSilva {
         System.out.print("Pressiona ENTER para continuar...");
         sc.nextLine();
         
-        int select = 0;
+        int select;
         do {
-            l.limparConsola();
+            Limpar.limparConsola();
             
             System.out.println("\t\n1. Novo Jogo\t\n2. Recorde\t\n0. Sair\t\n");
             System.out.print("Escolhe uma opção: ");
+            
             select = sc.nextInt();
             
             switch(select){
                 case 1:
                     l.limparConsola();
+                    
+                    j.numExt();
+                    j.cartão();
                 break;
                 case 2:
                     l.limparConsola();
