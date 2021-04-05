@@ -6,6 +6,9 @@
  */
 package lp_leandrocorreia_ruisilva;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Leandro Correia
@@ -42,10 +45,9 @@ public class LP_LeandroCorreia_RuiSilva {
                 case 1:
                     l.limparConsola();
                     
-                    j.sorteador();
                     j.numExt();
-                    j.cartão();
-                    sc.nextInt();
+                    j.cartao();
+                    sc.nextLine();
                 break;
                 case 2:
                     l.limparConsola();
@@ -61,7 +63,12 @@ public class LP_LeandroCorreia_RuiSilva {
             }
             
         } while (select!=0);
-        sc.nextLine();
+        
+        try {
+            TimeUnit.SECONDS.sleep(3); // Espera de 3 segundos até fechar o programa
+        } catch (InterruptedException ex) {
+            // Nada acontece
+        }
     }
     
 }
