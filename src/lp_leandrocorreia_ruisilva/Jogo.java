@@ -7,12 +7,17 @@ package lp_leandrocorreia_ruisilva;
 
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Leandro Correia
  */
 public class Jogo {
+    
+    // https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+    public static final String RESET = "\033[0m";  // Text Reset
+    public static final String CYAN_BRIGHT = "\u001B[36m";   // BRIGHT CYAN
     
     /**
      * O método "sorteador" realiza o sorteio de números pela matriz 3x9 (forma do cartão pedida).
@@ -50,7 +55,7 @@ public class Jogo {
                         cart[i][j] = r.nextInt(79 - 70) + 70;
                     }
                     if (i == 8) {
-                        cart[i][j] = r.nextInt(90 - 80) + 80;
+                        cart[i][j] = r.nextInt(91 - 80) + 80;
                     }
                     cartzero[i][j] = 1;
                 } while ((cart != cart)&&(cartzero != cartzero));
@@ -89,87 +94,126 @@ public class Jogo {
     public static void cartao() {
         Scanner sc = new Scanner(System.in);
         boolean ganhou = false;
+        boolean novojogo = false;
         int cartao[][] = new int[9][3];
         int cartaozero[][] = new int[9][3];
-        int num=0;
+        int num = 0;
+        int confirm = 0;
+        
         sorteador(cartao, cartaozero);
 
         do{
-            Limpar.limparConsola();
-            
-            numAnt();
-            System.out.println("╔═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╗");
-            System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
-            System.out.print("║");
-            for (int j = 0; j < 9; j++) {
-                if (j == 0 || cartao[j][0] == 0) {
-                    System.out.print(" ");
-                }
-                if (cartao[j][0] == 0) {
-                    System.out.print("        ║");
-                } else {
-                    System.out.print("   " + cartao[j][0] + "    ║");
-                }
-            }
-            System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
-            System.out.println("╠═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╣");
-            System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
-            System.out.print("║");
-            for (int j = 0; j < 9; j++) {
-                if (j == 0 || cartao[j][1] == 0) {
-                    System.out.print(" ");
-                }
-                if (cartao[j][1] == 0) {
-                    System.out.print("        ║");
-                } else {
-                    System.out.print("   " + cartao[j][1] + "    ║");
-                }
-            }
+            do{
+                Limpar.limparConsola();
 
-            System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
-            System.out.println("╠═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╣");
-            System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
-            System.out.print("║");
-            for (int j = 0; j < 9; j++) {
-                if (j == 0 || cartao[j][2] == 0) {
-                    System.out.print(" ");
-                }
-                if (cartao[j][2] == 0) {
-                    System.out.print("        ║");
-                } else {
-                    System.out.print("   " + cartao[j][2] + "    ║");
-                }
-            }
-            System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
-            System.out.println("╚═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╝");
-            
-            
-            System.out.print("Número sorteado: ");
-            num = sc.nextInt();
-            
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (cartao[i][j]==num) {
-                        cartaozero[i][j]=0;
+                numAnt();
+                System.out.println("╔═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╗");
+                System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
+                System.out.print("║");
+                for (int j = 0; j < 9; j++) {
+                    if (j == 0 || cartao[j][0] == 0) {
+                        System.out.print(" ");
+                    }
+                    if (cartao[j][0] == 0) {
+                        System.out.print("        ║");
                     } else {
-                        
+                        if (cartaozero[j][0]==0) {
+                            System.out.print("   "+ CYAN_BRIGHT + cartao[j][0] + RESET +"    ║");
+                        }else{
+                            System.out.print("   " + cartao[j][0] + "    ║");
+                        }
                     }
                 }
-            }
-            
-            
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if(soma(cartaozero)==0){
-                        ganhou = true;
+                System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
+                System.out.println("╠═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╣");
+                System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
+                System.out.print("║");
+                for (int j = 0; j < 9; j++) {
+                    if (j == 0 || cartao[j][1] == 0) {
+                        System.out.print(" ");
+                    }
+                    if (cartao[j][1] == 0) {
+                        System.out.print("        ║");
+                    } else {
+                        if (cartaozero[j][1]==0) {
+                            System.out.print("   "+ CYAN_BRIGHT + cartao[j][1] + RESET +"    ║");
+                        }else{
+                            System.out.print("   " + cartao[j][1] + "    ║");
+                        }
                     }
                 }
-            }
-            
+
+                System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
+                System.out.println("╠═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╬═════════╣");
+                System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
+                System.out.print("║");
+                for (int j = 0; j < 9; j++) {
+                    if (j == 0 || cartao[j][2] == 0) {
+                        System.out.print(" ");
+                    }
+                    if (cartao[j][2] == 0) {
+                        System.out.print("        ║");
+                    } else {
+                        if (cartaozero[j][2]==0) {
+                            System.out.print("   "+ CYAN_BRIGHT + cartao[j][2] + RESET +"    ║");
+                        }else{
+                            System.out.print("   " + cartao[j][2] + "    ║");
+                        }
+                    }
+
+                }
+                System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
+                System.out.println("╚═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╝");
+
+
+                System.out.print("Número sorteado: ");
+                num = sc.nextInt();
+
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (cartao[i][j]==num) {
+                            cartaozero[i][j]=0;
+                        } else {
+
+                        }
+                    }
+                }
+
+                if(soma(cartaozero)==0){
+                    ganhou = true;
+                    JOptionPane.showMessageDialog(null, "Parabéns! Ganhas-te o jogo", "Bingo!", JOptionPane.INFORMATION_MESSAGE);
+
+                    Limpar.limparConsola();
+                    System.out.println("Quer continuar com o mesmo cartão?\n\t1. Sim\n\t2. Não");
+
+                    System.out.print("Escolhe uma opção: ");
+                    confirm = sc.nextInt();
+
+                    switch(confirm){
+                        case 1:
+                            novojogo = false;
+                            for (int i = 0; i < 9; i++) {
+                                for (int j = 0; j < 3; j++) {
+                                    if(cartao[i][j]!=0){
+                                        cartaozero[i][j]=1;
+                                    }
+                                    if(cartao[i][j]==0){
+                                        cartaozero[i][j]=0;
+                                    }
+                                }
+                            }
+                            break;
+                        case 2:
+                            novojogo = true;
+                            break;
+                        default :
+                            novojogo = true;
+                            break;
+                    }
+                }
+            }while(!novojogo);
         }while(!ganhou);
         
-        System.out.println("\nGANHOU!!!\n");
-        sc.nextLine();
     }
     
     /**
