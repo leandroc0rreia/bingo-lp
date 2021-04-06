@@ -83,6 +83,7 @@ public class Jogo {
         int bingo = 1;
 
         do{
+            Limpar.limparConsola();
             
             numAnt();
             System.out.println("╔═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╗");
