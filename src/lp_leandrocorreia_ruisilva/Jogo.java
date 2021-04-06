@@ -14,7 +14,11 @@ import java.util.Scanner;
  */
 public class Jogo {
     
-    public static void sorteador(int cart[][]) {
+    /**
+     * O método "sorteador" realiza o sorteio de números pela matriz 3x9 (forma do cartão pedida)
+     * Devolve o @param cart como o cartão já preenchido, ou seja, sorteado.
+     */
+    private static void sorteador(int cart[][]) {
 
         Random r = new Random();
         // Soteio de número pela matriz cartão 3x9
@@ -67,16 +71,20 @@ public class Jogo {
         }
     }
 
+    /**
+     * O método "cartao" realiza a estrutura do cartão do bingo distribuindo os valores pelas respetivas posições da matriz
+     */
     public static void cartao() {
-        //Gerador de cartão com os números 
-        Scanner sc = new Scanner(System.in);
+        
+        boolean ganhou = false;
         int cartao[][] = new int[9][3];
         sorteador(cartao);
-
+        
         int bingo = 1;
 
-        for (int i = 0; i < bingo; i++) {
-
+        do{
+            
+            numAnt();
             System.out.println("╔═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╗");
             System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
             System.out.print("║");
@@ -121,17 +129,34 @@ public class Jogo {
             }
             System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
             System.out.println("╚═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╝");
-            sc.nextLine();
-        }
+            numExt();
+            
+        }while(!ganhou);
 
     }
     
+    /**
+     * O método numAnt mostra todos os números sorteados anteriormente no método numExt
+     */
+    public static void numAnt() {
+        
+        System.out.print("\nNúmeros anteriores:");
+        for (int i = 0; i < 9; i++) {
+            System.out.print(" "+ i);
+        }
+        System.out.println("");
+    }
+    
+    /**
+     * O método "numExt" faz a inserção dos números sorteados exteriormente 
+     */
     public static void numExt() {
-        //Números inseridos anteriormente
-
         Scanner sc = new Scanner(System.in);
-        int tamanho;
-
-        System.out.print("Números sorteados: \n");
+        
+        int num;
+        
+        System.out.print("Número sorteado: ");
+        num = sc.nextInt();
+        
     }
 }
