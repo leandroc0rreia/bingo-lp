@@ -15,10 +15,10 @@ import java.util.Scanner;
 public class Jogo {
     
     /**
-     * O método "sorteador" realiza o sorteio de números pela matriz 3x9 (forma do cartão pedida)
+     * O método "sorteador" realiza o sorteio de números pela matriz 3x9 (forma do cartão pedida).
      * Devolve o @param cart como o cartão já preenchido, ou seja, sorteado.
      */
-    private static void sorteador(int cart[][]) {
+    private static void sorteador(int cart[][], int cartzero[][]) {
 
         Random r = new Random();
         // Soteio de número pela matriz cartão 3x9
@@ -52,7 +52,8 @@ public class Jogo {
                     if (i == 8) {
                         cart[i][j] = r.nextInt(90 - 80) + 80;
                     }
-                } while (cart != cart);
+                    cartzero[i][j] = 1;
+                } while ((cart != cart)&&(cartzero != cartzero));
             }
         }
 
@@ -69,18 +70,29 @@ public class Jogo {
 
             }
         }
+        
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(cart[i][j]!=0){
+                    cartzero[i][j]=1;
+                }
+                if(cart[i][j]==0){
+                    cartzero[i][j]=0;
+                }
+            }
+        }
     }
 
     /**
      * O método "cartao" realiza a estrutura do cartão do bingo distribuindo os valores pelas respetivas posições da matriz
      */
     public static void cartao() {
-        
+        Scanner sc = new Scanner(System.in);
         boolean ganhou = false;
         int cartao[][] = new int[9][3];
-        sorteador(cartao);
-        
-        int bingo = 1;
+        int cartaozero[][] = new int[9][3];
+        int num=0;
+        sorteador(cartao, cartaozero);
 
         do{
             Limpar.limparConsola();
@@ -130,10 +142,34 @@ public class Jogo {
             }
             System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
             System.out.println("╚═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╝");
-            numExt();
+            
+            
+            System.out.print("Número sorteado: ");
+            num = sc.nextInt();
+            
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (cartao[i][j]==num) {
+                        cartaozero[i][j]=0;
+                    } else {
+                        
+                    }
+                }
+            }
+            
+            
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if(soma(cartaozero)==0){
+                        ganhou = true;
+                    }
+                }
+            }
             
         }while(!ganhou);
-
+        
+        System.out.println("\nGANHOU!!!\n");
+        sc.nextLine();
     }
     
     /**
@@ -141,23 +177,16 @@ public class Jogo {
      */
     public static void numAnt() {
         
-        System.out.print("\nNúmeros anteriores:");
-        for (int i = 0; i < 9; i++) {
-            System.out.print(" "+ i);
-        }
-        System.out.println("");
     }
     
-    /**
-     * O método "numExt" faz a inserção dos números sorteados exteriormente 
-     */
-    public static void numExt() {
-        Scanner sc = new Scanner(System.in);
+    public static int soma(int cartaozero[][]) {
         
-        int num;
-        
-        System.out.print("Número sorteado: ");
-        num = sc.nextInt();
-        
+        int s=0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                s = s + cartaozero[i][j];
+            }
+        }
+        return s;
     }
 }
