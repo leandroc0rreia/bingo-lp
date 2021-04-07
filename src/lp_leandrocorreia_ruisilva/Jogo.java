@@ -7,6 +7,8 @@ package lp_leandrocorreia_ruisilva;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -91,7 +93,7 @@ public class Jogo {
     /**
      * O método "cartao" realiza a estrutura do cartão do bingo distribuindo os valores pelas respetivas posições da matriz
      */
-    public static void cartao() {
+    public void cartao() {
         Scanner sc = new Scanner(System.in);
         boolean ganhou = false;
         boolean novojogo = false;
@@ -105,9 +107,9 @@ public class Jogo {
         do{
             do{
                 Limpar.limparConsola();
-
-                numAnt();
-                System.out.println("╔═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╗");
+                
+                numAnt(num);
+                System.out.println("\n╔═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╦═════════╗");
                 System.out.println("║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
                 System.out.print("║");
                 for (int j = 0; j < 9; j++) {
@@ -168,7 +170,7 @@ public class Jogo {
 
                 System.out.print("Número sorteado: ");
                 num = sc.nextInt();
-
+                
                 for (int i = 0; i < 9; i++) {
                     for (int j = 0; j < 3; j++) {
                         if (cartao[i][j]==num) {
@@ -202,13 +204,16 @@ public class Jogo {
                                     }
                                 }
                             }
-                            break;
+                            numAnt(num=0);
+                        break;
                         case 2:
                             novojogo = true;
-                            break;
+                            numAnt(num=0);
+                        break;
                         default :
                             novojogo = true;
-                            break;
+                            numAnt(num=0);
+                        break;
                     }
                 }
             }while(!novojogo);
@@ -219,8 +224,17 @@ public class Jogo {
     /**
      * O método numAnt mostra todos os números sorteados anteriormente no método numExt
      */
-    public static void numAnt() {
-        
+    List<Integer> listaNumsAnteriores = new ArrayList<>();
+    public void numAnt(int numeroQueCalhou) {
+        listaNumsAnteriores.add(numeroQueCalhou);
+
+        System.out.print("Os números anteriormente sorteados foram: ");
+        for (int c = 0; c < listaNumsAnteriores.size(); c++){
+            System.out.print(listaNumsAnteriores.get(c) + " ");
+        }
+        if(numeroQueCalhou==0){
+            listaNumsAnteriores.clear();
+        }
     }
     
     public static int soma(int cartaozero[][]) {

@@ -43,11 +43,9 @@ public class LP_LeandroCorreia_RuiSilva {
 
             switch (select) {
                 case 1:
-                    l.limparConsola();
-                    
                     j.cartao();
                     sc.nextLine();
-                    break;
+                break;
                 case 0:
                     l.limparConsola();
                     System.out.print("Fechando...");
@@ -57,11 +55,10 @@ public class LP_LeandroCorreia_RuiSilva {
                     } catch (InterruptedException ex) {
                         // Nada acontece
                     }
-                    
-                    break;
+                break;
                 default:
                     l.limparConsola();
-                    break;
+                break;
             }
 
         } while (select != 0);
