@@ -4,17 +4,21 @@
  * and open the template in the editor.
  */
 package lp_leandrocorreia_ruisilva;
+
 import java.io.IOException;
+
 /**
+ * Esta classe limpa a consola/terminal.
  *
  * @author Leandro Correia
  */
 public class Limpar {
-    public static void limparConsola(){
+
+    public static void limparConsola() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
-                new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
-            }else{
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
                 Runtime.getRuntime().exec("clear");
             }
         } catch (IOException | InterruptedException ex) {

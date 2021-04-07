@@ -45,20 +45,20 @@ public class LP_LeandroCorreia_RuiSilva {
                 case 1:
                     j.cartao();
                     sc.nextLine();
-                break;
+                    break;
                 case 0:
                     l.limparConsola();
                     System.out.print("Fechando...");
-                    
+
                     try {
                         TimeUnit.SECONDS.sleep(3); // Espera de 3 segundos até fechar o programa
                     } catch (InterruptedException ex) {
                         // Nada acontece
                     }
-                break;
+                    break;
                 default:
                     l.limparConsola();
-                break;
+                    break;
             }
 
         } while (select != 0);

@@ -10,9 +10,10 @@ package lp_leandrocorreia_ruisilva;
  * @author Leandro Correia
  */
 public class Recordes {
-    public static void recorde(){
+
+    public static void recorde() {
         //Tabela automatica de posições e tentativas
         System.out.println("\tRecordes do Bingo\n");
-        
+
     }
 }
