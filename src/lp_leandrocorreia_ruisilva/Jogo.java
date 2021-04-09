@@ -64,8 +64,8 @@ public class Jogo {
                 } while ((cart != cart) && (cartzero != cartzero));
             }
         }
-        
-/* 
+
+        /* 
     //Re-sortear números repetidos
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 3; j++) {
@@ -100,9 +100,7 @@ public class Jogo {
                 } while((cart[i][j]!=cart[i][0]) || (cart[i][j]!=cart[i][1]) || (cart[i][1]!=cart[i][2]));
             }
         }
-*/
-
-
+         */
         // Sorteio de posições a serem apagadas por linha
         int colunaalea = 0;
         for (int i = 0; i < 3; i++) {

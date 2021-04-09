@@ -23,7 +23,7 @@ public class LP_LeandroCorreia_RuiSilva {
         Limpar l = new Limpar();
         Jogo j = new Jogo();
 
-        l.limparConsola();
+        Limpar.limparConsola();
         System.out.println("Bem-vindo à plataforma do Bingo");
         System.out.println("Desenvolvido por: Leandro Correia e Rui Silva\n\n");
         System.out.println("O Bingo é um jogo de azar divertido no qual todos podem participar.\nNele, usa-se um cartão de quinze posições em que os números são sorteados\naleatoriamente, se conseguir preencher todos os quadrados do jogo, GANHA!\n");
@@ -47,7 +47,7 @@ public class LP_LeandroCorreia_RuiSilva {
                     sc.nextLine();
                     break;
                 case 0:
-                    l.limparConsola();
+                    Limpar.limparConsola();
                     System.out.print("Fechando...");
 
                     try {
@@ -57,7 +57,7 @@ public class LP_LeandroCorreia_RuiSilva {
                     }
                     break;
                 default:
-                    l.limparConsola();
+                    Limpar.limparConsola();
                     break;
             }
 
