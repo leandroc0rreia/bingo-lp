@@ -8,18 +8,21 @@ package lp_leandrocorreia_ruisilva;
 import java.io.IOException;
 
 /**
- * Esta classe limpa a consola/terminal.
  *
  * @author Leandro Correia
  */
 public class Limpar {
 
+    /**
+     * Este método limpa a consola/terminal.
+     */
     public static void limparConsola() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
                 Runtime.getRuntime().exec("clear");
+                System.out.print("\033[H\033[2J");
             }
         } catch (IOException | InterruptedException ex) {
         }

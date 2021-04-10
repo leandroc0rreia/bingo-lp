@@ -20,7 +20,6 @@ public class LP_LeandroCorreia_RuiSilva {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Limpar l = new Limpar();
         Jogo j = new Jogo();
 
         Limpar.limparConsola();

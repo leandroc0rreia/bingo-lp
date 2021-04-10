@@ -13,12 +13,18 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Leandro Correia e Rui Silva
+ * @author leandroc0rreia
  */
 public class Jogo {
 
-    // https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
-    public static final String RESET = "\033[0m";  // Text Reset
+    //  https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+    /**
+     * Esta string é direcionada para mudar a cor do texto para a cor default.
+     */
+    public static final String RESET = "\033[0m";
+    /**
+     * Esta string é direcionada para mudar a cor do texto para Ciano.
+     */
     public static final String CYAN_BRIGHT = "\u001B[36m";   // BRIGHT CYAN
 
     /**
@@ -65,42 +71,6 @@ public class Jogo {
             }
         }
 
-        /* 
-    //Re-sortear números repetidos
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 3; j++) {
-                do {
-                    if (i == 0) {
-                        cart[i][j] = r.nextInt(9 - 1) + 1;
-                    }
-                    if (i == 1) {
-                        cart[i][j] = r.nextInt(19 - 10) + 10;
-                    }
-                    if (i == 2) {
-                        cart[i][j] = r.nextInt(29 - 20) + 20;
-                    }
-                    if (i == 3) {
-                        cart[i][j] = r.nextInt(39 - 30) + 30;
-                    }
-                    if (i == 4) {
-                        cart[i][j] = r.nextInt(49 - 40) + 40;
-                    }
-                    if (i == 5) {
-                        cart[i][j] = r.nextInt(59 - 50) + 50;
-                    }
-                    if (i == 6) {
-                        cart[i][j] = r.nextInt(69 - 60) + 60;
-                    }
-                    if (i == 7) {
-                        cart[i][j] = r.nextInt(79 - 70) + 70;
-                    }
-                    if (i == 8) {
-                        cart[i][j] = r.nextInt(91 - 80) + 80;
-                    }
-                } while((cart[i][j]!=cart[i][0]) || (cart[i][j]!=cart[i][1]) || (cart[i][1]!=cart[i][2]));
-            }
-        }
-         */
         // Sorteio de posições a serem apagadas por linha
         int colunaalea = 0;
         for (int i = 0; i < 3; i++) {
@@ -129,7 +99,7 @@ public class Jogo {
 
     /**
      * O método "cartao" realiza a estrutura do cartão do bingo distribuindo os
-     * valores pelas respetivas posições da matriz
+     * valores pelas respetivas posições da matriz.
      */
     public void cartao() {
         Scanner sc = new Scanner(System.in);
@@ -259,11 +229,16 @@ public class Jogo {
     }
 
     /**
-     * O método numAnt mostra todos os números sorteados anteriormente no método
-     * numExt
+     * O método numAnt mostra todos os números sorteados anteriormente no
+     * método.
      */
     List<Integer> listaNumsAnteriores = new ArrayList<>();
 
+    /**
+     * Este método é usado para armazenar os números sorteados exteriormente e
+     * quando o utilizador ganhar a lista dos números é limpa. O @param
+     * numeroQueCalhou é o número sorteado exteriormente.
+     */
     public void numAnt(int numeroQueCalhou) {
         listaNumsAnteriores.add(numeroQueCalhou);
 
@@ -276,6 +251,13 @@ public class Jogo {
         }
     }
 
+    /**
+     * O método soma é direcionado para a soma de todos os elementos do
+     * cartãozero.
+     *
+     * @param cartaozero É constituido internamente por 0 e 1.
+     * @return soma
+     */
     public static int soma(int cartaozero[][]) {
 
         int s = 0;
