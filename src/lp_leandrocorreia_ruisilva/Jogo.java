@@ -17,81 +17,79 @@ import javax.swing.JOptionPane;
  */
 public class Jogo {
 
-    //  https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
-    /**
-     * Esta string é direcionada para mudar a cor do texto para a cor default.
-     */
     public static final String RESET = "\033[0m";
-    /**
-     * Esta string é direcionada para mudar a cor do texto para Ciano.
-     */
-    public static final String CYAN_BRIGHT = "\u001B[36m";   // BRIGHT CYAN
+    public static final String CYAN_BRIGHT = "\u001B[36m";
+    private int cartao[][] = new int[9][3];
+    private int cartaozero[][] = new int[9][3];
+    private int colunaalea = 0;
+    private int num = 0;
+    private int confirm = 0;
+    private boolean ganhou = false;
+    private boolean novojogo = false;
+    List<Integer> listaNumsAnteriores = new ArrayList<>();
 
     /**
-     * O método "sorteador" realiza o sorteio de números pela matriz 3x9 (forma
-     * do cartão do bingo). Devolve o @param cart como o cartão já preenchido,
-     * ou seja, sorteado.
+     * O método "sorteador" realiza o sorteio de números pela matriz 9x3 (forma
+     * do cartão do bingo). Condicionando o sorteamento dos números pelas
+     * colunas, pois se o valor da coluna for 0 irá sortear a Biblioteca
+     * "Random" de 1 até 9 e assim sucessivamente até 90.
      */
-    private static void sorteador(int cart[][], int cartzero[][]) {
-
+    private void sorteador() {
         Random r = new Random();
         // Soteio de número pela matriz cartão 3x9
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 3; j++) {
-                do {
-                    if (i == 0) {
-                        cart[i][j] = r.nextInt(9 - 1) + 1;
-                    }
-                    if (i == 1) {
-                        cart[i][j] = r.nextInt(19 - 10) + 10;
-                    }
-                    if (i == 2) {
-                        cart[i][j] = r.nextInt(29 - 20) + 20;
-                    }
-                    if (i == 3) {
-                        cart[i][j] = r.nextInt(39 - 30) + 30;
-                    }
-                    if (i == 4) {
-                        cart[i][j] = r.nextInt(49 - 40) + 40;
-                    }
-                    if (i == 5) {
-                        cart[i][j] = r.nextInt(59 - 50) + 50;
-                    }
-                    if (i == 6) {
-                        cart[i][j] = r.nextInt(69 - 60) + 60;
-                    }
-                    if (i == 7) {
-                        cart[i][j] = r.nextInt(79 - 70) + 70;
-                    }
-                    if (i == 8) {
-                        cart[i][j] = r.nextInt(91 - 80) + 80;
-                    }
-                    cartzero[i][j] = 1;
-                } while ((cart != cart) && (cartzero != cartzero));
+                if (i == 0) {
+                    cartao[i][j] = r.nextInt(10 - 1) + 1;
+                }
+                if (i == 1) {
+                    cartao[i][j] = r.nextInt(20 - 10) + 10;
+                }
+                if (i == 2) {
+                    cartao[i][j] = r.nextInt(30 - 20) + 20;
+                }
+                if (i == 3) {
+                    cartao[i][j] = r.nextInt(40 - 30) + 30;
+                }
+                if (i == 4) {
+                    cartao[i][j] = r.nextInt(50 - 40) + 40;
+                }
+                if (i == 5) {
+                    cartao[i][j] = r.nextInt(60 - 50) + 50;
+                }
+                if (i == 6) {
+                    cartao[i][j] = r.nextInt(70 - 60) + 60;
+                }
+                if (i == 7) {
+                    cartao[i][j] = r.nextInt(80 - 70) + 70;
+                }
+                if (i == 8) {
+                    cartao[i][j] = r.nextInt(91 - 80) + 80;
+                }
+                cartaozero[i][j] = 1;
             }
         }
 
         // Sorteio de posições a serem apagadas por linha
-        int colunaalea = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
 
                 colunaalea = r.nextInt(9);
                 do {
                     colunaalea = r.nextInt(9);
-                } while (cart[colunaalea][i] == 0);
-                cart[colunaalea][i] = 0;
+                } while (cartao[colunaalea][i] == 0);
+                cartao[colunaalea][i] = 0;
 
             }
         }
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 3; j++) {
-                if (cart[i][j] != 0) {
-                    cartzero[i][j] = 1;
+                if (cartao[i][j] != 0) {
+                    cartaozero[i][j] = 1;
                 }
-                if (cart[i][j] == 0) {
-                    cartzero[i][j] = 0;
+                if (cartao[i][j] == 0) {
+                    cartaozero[i][j] = 0;
                 }
             }
         }
@@ -103,14 +101,8 @@ public class Jogo {
      */
     public void cartao() {
         Scanner sc = new Scanner(System.in);
-        boolean ganhou = false;
-        boolean novojogo = false;
-        int cartao[][] = new int[9][3];
-        int cartaozero[][] = new int[9][3];
-        int num = 0;
-        int confirm = 0;
 
-        sorteador(cartao, cartaozero);
+        sorteador();
 
         do {
             do {
@@ -229,15 +221,10 @@ public class Jogo {
     }
 
     /**
-     * O método numAnt mostra todos os números sorteados anteriormente no
-     * método.
-     */
-    List<Integer> listaNumsAnteriores = new ArrayList<>();
-
-    /**
-     * Este método é usado para armazenar os números sorteados exteriormente e
-     * quando o utilizador ganhar a lista dos números é limpa. O @param
-     * numeroQueCalhou é o número sorteado exteriormente.
+     * Este método numAnt é usado para armazenar os números sorteados
+     * exteriormente e quando o utilizador ganhar a lista dos números é limpa.
+     *
+     * @param numeroQueCalhou é o número sorteado exteriormente.
      */
     public void numAnt(int numeroQueCalhou) {
         listaNumsAnteriores.add(numeroQueCalhou);
@@ -258,7 +245,7 @@ public class Jogo {
      * @param cartaozero É constituido internamente por 0 e 1.
      * @return soma
      */
-    public static int soma(int cartaozero[][]) {
+    public int soma(int cartaozero[][]) {
 
         int s = 0;
         for (int i = 0; i < 9; i++) {
