@@ -166,7 +166,11 @@ public class Jogo {
                 }
                 System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
                 System.out.println("╚═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╝");
-
+                for (int i = 0; i < 3; i++) {
+                    if (somaLinha(i)==0) {
+                        System.out.println((i+1)+"ª Linha completa!");
+                    }
+                }
                 System.out.print("Número sorteado: ");
                 num = sc.nextInt();
 
@@ -179,6 +183,8 @@ public class Jogo {
                         }
                     }
                 }
+                
+                
 
                 if (soma(cartaozero) == 0) {
                     ganhou = true;
@@ -252,6 +258,14 @@ public class Jogo {
             for (int j = 0; j < 3; j++) {
                 s = s + cartaozero[i][j];
             }
+        }
+        return s;
+    }
+    
+    public int somaLinha(int j) {
+        int s=0;
+        for (int i = 0; i < 9; i++) {
+            s = s + cartaozero[i][j];
         }
         return s;
     }

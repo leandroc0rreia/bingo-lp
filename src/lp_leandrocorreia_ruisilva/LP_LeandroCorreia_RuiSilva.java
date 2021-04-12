@@ -16,7 +16,8 @@ import java.util.concurrent.TimeUnit;
 public class LP_LeandroCorreia_RuiSilva {
 
     /**
-     * @param args the command line arguments
+     * 
+     * @param args 
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
