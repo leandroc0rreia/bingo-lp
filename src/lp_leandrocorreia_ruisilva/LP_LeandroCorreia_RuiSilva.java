@@ -10,13 +10,14 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
- * @author Leandro Correia
+ * A classe <b>LP_LeandroCorreia_RuiSilva</b> consiste na apresentação da interface ao utilizador do cartão e menu de opções sendo elas "Novo Jogo" ou "Sair".
+ * @author Leandro_Correia e Rui_Silva
+ * @version v1.0
  */
 public class LP_LeandroCorreia_RuiSilva {
 
     /**
-     * 
+     * Método Main
      * @param args 
      */
     public static void main(String[] args) {

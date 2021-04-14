@@ -8,8 +8,9 @@ package lp_leandrocorreia_ruisilva;
 import java.io.IOException;
 
 /**
- *
- * @author Leandro Correia
+ * A classe <b>Limpar</b> consiste na limpeza da consola Windows ou Linux.
+ * @author Leandro_Correia e Rui_Silva
+ * @version v1.0
  */
 public class Limpar {
 

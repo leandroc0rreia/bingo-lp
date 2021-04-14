@@ -12,22 +12,41 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author leandroc0rreia
+ * A classe <b>Jogo</b> consiste no sorteio de números pela matriz(9x3) em que existe a condição de sortear números por coluna, na primeira coluna de 1 até 9, na segunda coluna 10 até 20 e assim sucessivamente até atingir o número máximo (90). Criamos um método para remover aleatóriamente 4 elementos de cada linha, sendo esses elementos atribuido o valor 0. Há uma matriz paralela chamada cartãozero que consiste numa matriz com valores entre 0 e 1. Em que o valor 1 é atribuido aos valores maiores que 0 na coluna cartao e zero aos valores igual a zero. O jogo só acaba quando a soma dos valores do cartaozero for igual a 0.
+ * @author Leandro_Correia e Rui_Silva
+ * @version v1.0
  */
 public class Jogo {
-
+    
+    /**
+     * O campo <b>RESET</b> é um editor de texto para voltar à cor default.
+     */
     public static final String RESET = "\033[0m";
+    /**
+     * O campo <b>CYAN_BRIGHT</b> é um editor de texto, da cor default para Ciano.
+     */
     public static final String CYAN_BRIGHT = "\u001B[36m";
+    
     private int cartao[][] = new int[9][3];
     private int cartaozero[][] = new int[9][3];
-    private int colunaalea = 0;
-    private int num = 0;
-    private int confirm = 0;
-    private boolean ganhou = false;
-    private boolean novojogo = false;
+    private int colunaalea;
+    private int num;
+    private int confirm;
+    private boolean ganhou;
+    private boolean novojogo;
     List<Integer> listaNumsAnteriores = new ArrayList<>();
 
+    /**
+     * Construtor <b>Jogo</b>.
+     */
+    public Jogo() {
+        this.colunaalea = 0;
+        this.num = 0;
+        this.confirm = 0;
+        this.ganhou = false;
+        this.novojogo = false;
+    }
+    
     /**
      * O método "sorteador" realiza o sorteio de números pela matriz 9x3 (forma
      * do cartão do bingo). Condicionando o sorteamento dos números pelas
@@ -262,6 +281,11 @@ public class Jogo {
         return s;
     }
     
+    /**
+     * O método <b>somaLinha</b> vai somar todos os elementos de cada linha do cartão zero, para mostrar a notificação de como a linha do cartão do utilizador está completa, sendo o parâmetro j definido pelo método <b>cartao</b>.
+     * @param j
+     * @return soma
+     */
     public int somaLinha(int j) {
         int s=0;
         for (int i = 0; i < 9; i++) {
