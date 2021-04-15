@@ -12,21 +12,31 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- * A classe <b>Jogo</b> consiste no sorteio de números pela matriz(9x3) em que existe a condição de sortear números por coluna, na primeira coluna de 1 até 9, na segunda coluna 10 até 20 e assim sucessivamente até atingir o número máximo (90). Criamos um método para remover aleatóriamente 4 elementos de cada linha, sendo esses elementos atribuido o valor 0. Há uma matriz paralela chamada cartãozero que consiste numa matriz com valores entre 0 e 1. Em que o valor 1 é atribuido aos valores maiores que 0 na coluna cartao e zero aos valores igual a zero. O jogo só acaba quando a soma dos valores do cartaozero for igual a 0.
+ * A classe <b>Jogo</b> consiste no sorteio de números pela matriz(9x3) em que
+ * existe a condição de sortear números por coluna, na primeira coluna de 1 até
+ * 9, na segunda coluna 10 até 20 e assim sucessivamente até atingir o número
+ * máximo (90). Criamos um método para remover aleatóriamente 4 elementos de
+ * cada linha, sendo esses elementos atribuido o valor 0. Há uma matriz paralela
+ * chamada cartãozero que consiste numa matriz com valores entre 0 e 1. Em que o
+ * valor 1 é atribuido aos valores maiores que 0 na coluna cartao e zero aos
+ * valores igual a zero. O jogo só acaba quando a soma dos valores do cartaozero
+ * for igual a 0.
+ *
  * @author Leandro_Correia e Rui_Silva
  * @version v1.0
  */
 public class Jogo {
-    
+
     /**
      * O campo <b>RESET</b> é um editor de texto para voltar à cor default.
      */
     public static final String RESET = "\033[0m";
     /**
-     * O campo <b>CYAN_BRIGHT</b> é um editor de texto, da cor default para Ciano.
+     * O campo <b>CYAN_BRIGHT</b> é um editor de texto, da cor default para
+     * Ciano.
      */
     public static final String CYAN_BRIGHT = "\u001B[36m";
-    
+
     private int cartao[][] = new int[9][3];
     private int cartaozero[][] = new int[9][3];
     private int colunaalea;
@@ -35,11 +45,11 @@ public class Jogo {
     private boolean ganhou;
     private boolean novojogo;
     List<Integer> listaNumsAnteriores = new ArrayList<>();
-
+    
     /**
      * Construtor <b>Jogo</b>.
      */
-    public Jogo() {
+    public Jogo() {    
         this.colunaalea = 0;
         this.num = 0;
         this.confirm = 0;
@@ -53,7 +63,7 @@ public class Jogo {
      * colunas, pois se o valor da coluna for 0 irá sortear a Biblioteca
      * "Random" de 1 até 9 e assim sucessivamente até 90.
      */
-    private void sorteador() {
+    public void sorteador() {
         Random r = new Random();
         // Soteio de número pela matriz cartão 3x9
         for (int i = 0; i < 9; i++) {
@@ -88,20 +98,16 @@ public class Jogo {
                 cartaozero[i][j] = 1;
             }
         }
-
         // Sorteio de posições a serem apagadas por linha
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
-
                 colunaalea = r.nextInt(9);
                 do {
                     colunaalea = r.nextInt(9);
                 } while (cartao[colunaalea][i] == 0);
                 cartao[colunaalea][i] = 0;
-
             }
         }
-
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 3; j++) {
                 if (cartao[i][j] != 0) {
@@ -186,8 +192,8 @@ public class Jogo {
                 System.out.println("\n║         ║         ║         ║         ║         ║         ║         ║         ║         ║");
                 System.out.println("╚═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╩═════════╝");
                 for (int i = 0; i < 3; i++) {
-                    if (somaLinha(i)==0) {
-                        System.out.println((i+1)+"ª Linha completa!");
+                    if (somaLinha(i) == 0) {
+                        System.out.println((i + 1) + "ª Linha completa!");
                     }
                 }
                 System.out.print("Número sorteado: ");
@@ -202,8 +208,6 @@ public class Jogo {
                         }
                     }
                 }
-                
-                
 
                 if (soma(cartaozero) == 0) {
                     ganhou = true;
@@ -280,14 +284,18 @@ public class Jogo {
         }
         return s;
     }
-    
+
     /**
-     * O método <b>somaLinha</b> vai somar todos os elementos de cada linha do cartão zero, para mostrar a notificação de como a linha do cartão do utilizador está completa, sendo o parâmetro j definido pelo método <b>cartao</b>.
+     * O método <b>somaLinha</b> vai somar todos os elementos de cada linha do
+     * cartão zero, para mostrar a notificação de como a linha do cartão do
+     * utilizador está completa, sendo o parâmetro j definido pelo método
+     * <b>cartao</b>.
+     *
      * @param j
      * @return soma
      */
     public int somaLinha(int j) {
-        int s=0;
+        int s = 0;
         for (int i = 0; i < 9; i++) {
             s = s + cartaozero[i][j];
         }
