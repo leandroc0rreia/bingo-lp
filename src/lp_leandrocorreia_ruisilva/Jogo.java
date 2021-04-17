@@ -65,10 +65,10 @@ public class Jogo {
      */
     public void sorteador() {
         Random r = new Random();
-        // Soteio de número pela matriz cartão 3x9
+        // Soteio de número pela matriz cartão 9x3
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 3; j++) {
-                if (i == 0) {
+                if (i == 0) {                 
                     cartao[i][j] = r.nextInt(10 - 1) + 1;
                 }
                 if (i == 1) {
@@ -96,7 +96,46 @@ public class Jogo {
                     cartao[i][j] = r.nextInt(91 - 80) + 80;
                 }
                 cartaozero[i][j] = 1;
+                if (j>0) {
+                    for (int k = 0; k < 3; k++) {
+                        if (k<=j && cartao[i][j-k]==cartao[i][j]){
+                            do {                                
+                                if (i == 0) {                 
+                                    cartao[i][j] = r.nextInt(10 - 1) + 1;
+                                }
+                                if (i == 1) {
+                                    cartao[i][j] = r.nextInt(20 - 10) + 10;
+                                }
+                                if (i == 2) {
+                                    cartao[i][j] = r.nextInt(30 - 20) + 20;
+                                }
+                                if (i == 3) {
+                                    cartao[i][j] = r.nextInt(40 - 30) + 30;
+                                }
+                                if (i == 4) {
+                                    cartao[i][j] = r.nextInt(50 - 40) + 40;
+                                }
+                                if (i == 5) {
+                                    cartao[i][j] = r.nextInt(60 - 50) + 50;
+                                }
+                                if (i == 6) {
+                                    cartao[i][j] = r.nextInt(70 - 60) + 60;
+                                }
+                                if (i == 7) {
+                                    cartao[i][j] = r.nextInt(80 - 70) + 70;
+                                }
+                                if (i == 8) {
+                                    cartao[i][j] = r.nextInt(91 - 80) + 80;
+                                }
+                                k=1;
+                            } while (cartao[i][j]==cartao[i][j-k]);
+                        }
+                    }
+                }
+                
+                
             }
+            
         }
         // Sorteio de posições a serem apagadas por linha
         for (int i = 0; i < 3; i++) {
