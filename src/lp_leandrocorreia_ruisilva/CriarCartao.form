@@ -141,17 +141,19 @@
                   <Component id="cu18" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cu22" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="cu23" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="cu24" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="cu25" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="cu26" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="cu27" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="cu19" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="cu20" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="cu21" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cu22" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="cu23" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="cu24" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="cu25" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="cu26" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="cu27" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>

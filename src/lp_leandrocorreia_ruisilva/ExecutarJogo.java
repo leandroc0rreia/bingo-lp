@@ -33,7 +33,6 @@ public class ExecutarJogo {
         
         m.setVisible(true);
         
-        
     }
 }
 

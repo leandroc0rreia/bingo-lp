@@ -7,6 +7,7 @@
 package lp_leandrocorreia_ruisilva;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,8 @@ public class CriarCartao extends javax.swing.JFrame {
     private int cartaozero[][] = new int[9][3];
     private int colunaalea;
     private int cartpronto;
+    private int check = 0;
+    private int lista[] = new int[90];
 
     public CriarCartao() {
         initComponents();
@@ -589,17 +592,18 @@ public class CriarCartao extends javax.swing.JFrame {
                     .addComponent(cu17, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cu18, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cu22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cu23, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cu24, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cu25, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cu26, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cu27, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cu19, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cu20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cu21, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cu21, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cu22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cu23, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cu24, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cu25, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cu26, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cu27, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -614,41 +618,67 @@ public class CriarCartao extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if (cartpronto != 9) {
+        if (cartpronto != 10) {
             this.cartpronto = 0;
             if (cu1.getText().equals(cu10.getText()) || cu1.getText().equals(cu19.getText()) || cu10.getText().equals(cu19.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 1", "Erro", 2);
+                if( (cu1.getText().equals("") && cu10.getText().equals("")) || (cu1.getText().equals("") && cu19.getText().equals("")) || (cu10.getText().equals("") && cu19.getText().equals("")) || (cu1.getText().equals("") && cu10.getText().equals("") && cu19.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 1", "Erro", 2);
             }
             if (cu2.getText().equals(cu11.getText()) || cu2.getText().equals(cu20.getText()) || cu11.getText().equals(cu20.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 2", "Erro", 2);
+                if( (cu2.getText().equals("") && cu11.getText().equals("")) || (cu2.getText().equals("") && cu20.getText().equals("")) || (cu11.getText().equals("") && cu20.getText().equals("")) || (cu2.getText().equals("") && cu11.getText().equals("") && cu20.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 2", "Erro", 2);
             }
             if (cu3.getText().equals(cu12.getText()) || cu3.getText().equals(cu21.getText()) || cu12.getText().equals(cu21.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 3", "Erro", 2);
+                if( (cu3.getText().equals("") && cu12.getText().equals("")) || (cu3.getText().equals("") && cu21.getText().equals("")) || (cu12.getText().equals("") && cu21.getText().equals("")) || (cu3.getText().equals("") && cu12.getText().equals("") && cu21.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 3", "Erro", 2);
             }
             if (cu4.getText().equals(cu13.getText()) || cu4.getText().equals(cu22.getText()) || cu13.getText().equals(cu22.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 4", "Erro", 2);
+                if( (cu4.getText().equals("") && cu13.getText().equals("")) || (cu4.getText().equals("") && cu22.getText().equals("")) || (cu13.getText().equals("") && cu22.getText().equals("")) || (cu4.getText().equals("") && cu13.getText().equals("") && cu22.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 4", "Erro", 2);
             }
             if (cu5.getText().equals(cu14.getText()) || cu5.getText().equals(cu23.getText()) || cu14.getText().equals(cu23.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 5", "Erro", 2);
+                if( (cu5.getText().equals("") && cu14.getText().equals("")) || (cu5.getText().equals("") && cu23.getText().equals("")) || (cu14.getText().equals("") && cu23.getText().equals("")) || (cu5.getText().equals("") && cu14.getText().equals("") && cu23.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 5", "Erro", 2);
             }
             if (cu6.getText().equals(cu15.getText()) || cu6.getText().equals(cu24.getText()) || cu15.getText().equals(cu24.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 6", "Erro", 2);
+                if( (cu6.getText().equals("") && cu15.getText().equals("")) || (cu6.getText().equals("") && cu24.getText().equals("")) || (cu15.getText().equals("") && cu24.getText().equals("")) || (cu6.getText().equals("") && cu15.getText().equals("") && cu24.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 6", "Erro", 2);
             }
             if (cu7.getText().equals(cu16.getText()) || cu7.getText().equals(cu25.getText()) || cu16.getText().equals(cu25.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 7", "Erro", 2);
+                if( (cu7.getText().equals("") && cu16.getText().equals("")) || (cu7.getText().equals("") && cu25.getText().equals("")) || (cu16.getText().equals("") && cu25.getText().equals("")) || (cu7.getText().equals("") && cu16.getText().equals("") && cu25.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 7", "Erro", 2);
             }
             if (cu8.getText().equals(cu17.getText()) || cu8.getText().equals(cu26.getText()) || cu17.getText().equals(cu26.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 8", "Erro", 2);
+                if( (cu8.getText().equals("") && cu17.getText().equals("")) || (cu8.getText().equals("") && cu26.getText().equals("")) || (cu17.getText().equals("") && cu26.getText().equals("")) || (cu8.getText().equals("") && cu17.getText().equals("") && cu26.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 8", "Erro", 2);
             }
             if (cu9.getText().equals(cu18.getText()) || cu9.getText().equals(cu27.getText()) || cu18.getText().equals(cu27.getText())) {
-                JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 9", "Erro", 2);
+                if( (cu9.getText().equals("") && cu18.getText().equals("")) || (cu9.getText().equals("") && cu27.getText().equals("")) || (cu18.getText().equals("") && cu27.getText().equals("")) || (cu9.getText().equals("") && cu18.getText().equals("") && cu27.getText().equals("")) ) this.cartpronto = cartpronto + 1;
+                else JOptionPane.showMessageDialog(null, "Inseriu números iguais na Coluna: 9", "Erro", 2);
             }
+            
+           
+            
         } else {
-            this.cartpronto = 9;
+            this.cartpronto = 10;
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    public void atribuirLista(){
+        for (int i = 1; i <=90; i++) {
+            lista[i] = i;
+        }
+    }
+    
+    public void compararLista(){
+        
+        for (int i = 1; i <= 90; i++) {
+            if(cu1.getText().equals(i)) this.check = this.check + 1;
+        }
+        
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Sorteador();
     }//GEN-LAST:event_jButton2ActionPerformed
