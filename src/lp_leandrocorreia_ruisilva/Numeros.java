@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author leandroc0rreia
  */
-public class Numeros extends Cartao{
+public class Numeros {
 
     List<Integer> listaNumsAnteriores = new ArrayList<>();
     private int num;
@@ -28,8 +28,7 @@ public class Numeros extends Cartao{
      */
     public void numAnt(int numeroQueCalhou) {
         listaNumsAnteriores.add(numeroQueCalhou);
-
-        System.out.print("Os números anteriormente sorteados foram: ");
+        
         for (int c = 0; c < listaNumsAnteriores.size(); c++) {
             System.out.print(listaNumsAnteriores.get(c) + " ");
         }
