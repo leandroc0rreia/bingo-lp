@@ -203,6 +203,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu2">
       <Properties>
@@ -211,6 +214,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu3">
       <Properties>
@@ -219,6 +225,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu4">
       <Properties>
@@ -227,6 +236,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu5">
       <Properties>
@@ -235,6 +247,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu6">
       <Properties>
@@ -243,6 +258,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu7">
       <Properties>
@@ -251,6 +269,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu8">
       <Properties>
@@ -259,6 +280,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu9">
       <Properties>
@@ -267,6 +291,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu10">
       <Properties>
@@ -275,6 +302,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu11">
       <Properties>
@@ -283,6 +313,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu12">
       <Properties>
@@ -291,6 +324,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu13">
       <Properties>
@@ -299,6 +335,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu14">
       <Properties>
@@ -307,6 +346,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu15">
       <Properties>
@@ -315,6 +357,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu16">
       <Properties>
@@ -323,6 +368,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu17">
       <Properties>
@@ -331,6 +379,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu18">
       <Properties>
@@ -342,6 +393,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cu18ActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu19">
       <Properties>
@@ -350,6 +404,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu20">
       <Properties>
@@ -358,6 +415,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu21">
       <Properties>
@@ -366,6 +426,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu22">
       <Properties>
@@ -374,6 +437,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu23">
       <Properties>
@@ -382,6 +448,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu24">
       <Properties>
@@ -390,6 +459,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu25">
       <Properties>
@@ -398,6 +470,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu26">
       <Properties>
@@ -406,6 +481,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="cu27">
       <Properties>
@@ -414,6 +492,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

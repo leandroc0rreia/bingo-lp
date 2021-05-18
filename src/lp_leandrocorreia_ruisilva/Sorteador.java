@@ -96,22 +96,7 @@ public class Sorteador {
         }
     }
     
-    public void veriLinha(){
-        
-    }
     
-    public void veriColuna(){
-        
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 3; j++) {
-                Object obj = cartao[i][j];
-                if () {
-                    
-                }
-            }
-        }
-        
-    }
     
 }
                             

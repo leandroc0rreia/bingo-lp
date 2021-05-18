@@ -15,13 +15,15 @@ import java.util.Random;
  */
 public class CriarCartao extends javax.swing.JFrame {
     
-    Sorteador s;
+    Sorteador s = new Sorteador();
+    private int cartao[][] = new int[9][3];
+    private int cartaozero[][] = new int[9][3];
     
     public CriarCartao() {
         
-        s = new Sorteador();
         initComponents();
         this.setLocationRelativeTo(null);
+        setCartao();
         
     }
     
@@ -313,41 +315,107 @@ public class CriarCartao extends javax.swing.JFrame {
         setBackground(new Color(a, b, c));
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    public void setCartao(){
+        s.sorteioCartao();
         
+        cu1.setText(String.valueOf(s.cartao[0][0]));
+        if(cu1.getText().equals("0")) cu1.setText("");
+        cu2.setText(String.valueOf(s.cartao[1][0]));
+        if(cu2.getText().equals("0")) cu2.setText("");
+        cu3.setText(String.valueOf(s.cartao[2][0]));
+        if(cu3.getText().equals("0")) cu3.setText("");
+        cu4.setText(String.valueOf(s.cartao[3][0]));
+        if(cu4.getText().equals("0")) cu4.setText("");
+        cu5.setText(String.valueOf(s.cartao[4][0]));
+        if(cu5.getText().equals("0")) cu5.setText("");
+        cu6.setText(String.valueOf(s.cartao[5][0]));
+        if(cu6.getText().equals("0")) cu6.setText("");
+        cu7.setText(String.valueOf(s.cartao[6][0]));
+        if(cu7.getText().equals("0")) cu7.setText("");
+        cu8.setText(String.valueOf(s.cartao[7][0]));
+        if(cu8.getText().equals("0")) cu8.setText("");
+        cu9.setText(String.valueOf(s.cartao[8][0]));
+        if(cu9.getText().equals("0")) cu9.setText("");
+        cu10.setText(String.valueOf(s.cartao[0][1]));
+        if(cu10.getText().equals("0")) cu10.setText("");
+        cu11.setText(String.valueOf(s.cartao[1][1]));
+        if(cu11.getText().equals("0")) cu11.setText("");
+        cu12.setText(String.valueOf(s.cartao[2][1]));
+        if(cu12.getText().equals("0")) cu12.setText("");
+        cu13.setText(String.valueOf(s.cartao[3][1]));
+        if(cu13.getText().equals("0")) cu13.setText("");
+        cu14.setText(String.valueOf(s.cartao[4][1]));
+        if(cu14.getText().equals("0")) cu14.setText("");
+        cu15.setText(String.valueOf(s.cartao[5][1]));
+        if(cu15.getText().equals("0")) cu15.setText("");
+        cu16.setText(String.valueOf(s.cartao[6][1]));
+        if(cu16.getText().equals("0")) cu16.setText("");
+        cu17.setText(String.valueOf(s.cartao[7][1]));
+        if(cu17.getText().equals("0")) cu17.setText("");
+        cu18.setText(String.valueOf(s.cartao[8][1]));
+        if(cu18.getText().equals("0")) cu18.setText("");
+        cu19.setText(String.valueOf(s.cartao[0][2]));
+        if(cu19.getText().equals("0")) cu19.setText("");
+        cu20.setText(String.valueOf(s.cartao[1][2]));
+        if(cu20.getText().equals("0")) cu20.setText("");
+        cu21.setText(String.valueOf(s.cartao[2][2]));
+        if(cu21.getText().equals("0")) cu21.setText("");
+        cu22.setText(String.valueOf(s.cartao[3][2]));
+        if(cu22.getText().equals("0")) cu22.setText("");
+        cu23.setText(String.valueOf(s.cartao[4][2]));
+        if(cu23.getText().equals("0")) cu23.setText("");
+        cu24.setText(String.valueOf(s.cartao[5][2]));
+        if(cu24.getText().equals("0")) cu24.setText("");
+        cu25.setText(String.valueOf(s.cartao[6][2]));
+        if(cu25.getText().equals("0")) cu25.setText("");
+        cu26.setText(String.valueOf(s.cartao[7][2]));
+        if(cu26.getText().equals("0")) cu26.setText("");
+        cu27.setText(String.valueOf(s.cartao[8][2]));
+        if(cu27.getText().equals("0")) cu27.setText("");
+    }
+    
+    public void checkCartao(){
+
+        cartao[0][0] = Integer.valueOf(cu1.getText());
+        cartao[1][0] = Integer.valueOf(cu2.getText());
+        cartao[2][0] = Integer.valueOf(cu3.getText());
+        cartao[3][0] = Integer.valueOf(cu4.getText());
+        cartao[4][0] = Integer.valueOf(cu5.getText());
+        cartao[5][0] = Integer.valueOf(cu6.getText());
+        cartao[6][0] = Integer.valueOf(cu7.getText());
+        cartao[7][0] = Integer.valueOf(cu8.getText());
+        cartao[8][0] = Integer.valueOf(cu9.getText());
+        
+        cartao[0][1] = Integer.valueOf(cu10.getText());
+        cartao[1][1] = Integer.valueOf(cu11.getText());
+        cartao[2][1] = Integer.valueOf(cu12.getText());
+        cartao[3][1] = Integer.valueOf(cu13.getText());
+        cartao[4][1] = Integer.valueOf(cu14.getText());
+        cartao[5][1] = Integer.valueOf(cu15.getText());
+        cartao[6][1] = Integer.valueOf(cu16.getText());
+        cartao[7][1] = Integer.valueOf(cu17.getText());
+        cartao[8][1] = Integer.valueOf(cu18.getText());
+        
+        cartao[0][2] = Integer.valueOf(cu19.getText());
+        cartao[1][2] = Integer.valueOf(cu20.getText());
+        cartao[2][2] = Integer.valueOf(cu21.getText());
+        cartao[3][2] = Integer.valueOf(cu22.getText());
+        cartao[4][2] = Integer.valueOf(cu23.getText());
+        cartao[5][2] = Integer.valueOf(cu24.getText());
+        cartao[6][2] = Integer.valueOf(cu25.getText());
+        cartao[7][2] = Integer.valueOf(cu26.getText());
+        cartao[8][2] = Integer.valueOf(cu27.getText());
+        
+        System.out.println("ta");
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        checkCartao();
             
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        s.sorteioCartao();
-        
-        cu1.setText(String.valueOf(s.cartao[0][0]));
-        cu2.setText(String.valueOf(s.cartao[1][0]));
-        cu3.setText(String.valueOf(s.cartao[2][0]));
-        cu4.setText(String.valueOf(s.cartao[3][0]));
-        cu5.setText(String.valueOf(s.cartao[4][0]));
-        cu6.setText(String.valueOf(s.cartao[5][0]));
-        cu7.setText(String.valueOf(s.cartao[6][0]));
-        cu8.setText(String.valueOf(s.cartao[7][0]));
-        cu9.setText(String.valueOf(s.cartao[8][0]));
-        cu10.setText(String.valueOf(s.cartao[0][1]));
-        cu11.setText(String.valueOf(s.cartao[1][1]));
-        cu12.setText(String.valueOf(s.cartao[2][1]));
-        cu13.setText(String.valueOf(s.cartao[3][1]));
-        cu14.setText(String.valueOf(s.cartao[4][1]));
-        cu15.setText(String.valueOf(s.cartao[5][1]));
-        cu16.setText(String.valueOf(s.cartao[6][1]));
-        cu17.setText(String.valueOf(s.cartao[7][1]));
-        cu18.setText(String.valueOf(s.cartao[8][1]));
-        cu19.setText(String.valueOf(s.cartao[0][2]));
-        cu20.setText(String.valueOf(s.cartao[1][2]));
-        cu21.setText(String.valueOf(s.cartao[2][2]));
-        cu22.setText(String.valueOf(s.cartao[3][2]));
-        cu23.setText(String.valueOf(s.cartao[4][2]));
-        cu24.setText(String.valueOf(s.cartao[5][2]));
-        cu25.setText(String.valueOf(s.cartao[6][2]));
-        cu26.setText(String.valueOf(s.cartao[7][2]));
-        cu27.setText(String.valueOf(s.cartao[8][2]));
+        setCartao();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -363,33 +431,33 @@ public class CriarCartao extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cu1;
-    private javax.swing.JTextField cu10;
-    private javax.swing.JTextField cu11;
-    private javax.swing.JTextField cu12;
-    private javax.swing.JTextField cu13;
-    private javax.swing.JTextField cu14;
-    private javax.swing.JTextField cu15;
-    private javax.swing.JTextField cu16;
-    private javax.swing.JTextField cu17;
-    private javax.swing.JTextField cu18;
-    private javax.swing.JTextField cu19;
-    private javax.swing.JTextField cu2;
-    private javax.swing.JTextField cu20;
-    private javax.swing.JTextField cu21;
-    private javax.swing.JTextField cu22;
-    private javax.swing.JTextField cu23;
-    private javax.swing.JTextField cu24;
-    private javax.swing.JTextField cu25;
-    private javax.swing.JTextField cu26;
-    private javax.swing.JTextField cu27;
-    private javax.swing.JTextField cu3;
-    private javax.swing.JTextField cu4;
-    private javax.swing.JTextField cu5;
-    private javax.swing.JTextField cu6;
-    private javax.swing.JTextField cu7;
-    private javax.swing.JTextField cu8;
-    private javax.swing.JTextField cu9;
+    public javax.swing.JTextField cu1;
+    public javax.swing.JTextField cu10;
+    public javax.swing.JTextField cu11;
+    public javax.swing.JTextField cu12;
+    public javax.swing.JTextField cu13;
+    public javax.swing.JTextField cu14;
+    public javax.swing.JTextField cu15;
+    public javax.swing.JTextField cu16;
+    public javax.swing.JTextField cu17;
+    public javax.swing.JTextField cu18;
+    public javax.swing.JTextField cu19;
+    public javax.swing.JTextField cu2;
+    public javax.swing.JTextField cu20;
+    public javax.swing.JTextField cu21;
+    public javax.swing.JTextField cu22;
+    public javax.swing.JTextField cu23;
+    public javax.swing.JTextField cu24;
+    public javax.swing.JTextField cu25;
+    public javax.swing.JTextField cu26;
+    public javax.swing.JTextField cu27;
+    public javax.swing.JTextField cu3;
+    public javax.swing.JTextField cu4;
+    public javax.swing.JTextField cu5;
+    public javax.swing.JTextField cu6;
+    public javax.swing.JTextField cu7;
+    public javax.swing.JTextField cu8;
+    public javax.swing.JTextField cu9;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;

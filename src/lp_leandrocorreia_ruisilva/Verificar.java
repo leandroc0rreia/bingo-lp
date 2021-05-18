@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author leandroc0rreia
  */
-public class Verificar{
+public class Verificar {
     
     private int num;
     private int confirm;
@@ -20,12 +20,20 @@ public class Verificar{
     private int cartao[][] = new int[9][3];
     private int cartaozero[][] = new int[9][3];
 
-    public Verificar(int num) {
-        this.num = 0;
-        this.ganhou = false;
-        this.novojogo = false;
+    public Verificar() {
+        
+        
+        
     }
-
+    
+    public void existeLetras(){
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.println(cartao[i][j]);
+            }
+        }
+    }
+    
     public void setConfirm(int confirm) {
         this.confirm = confirm;
     }
