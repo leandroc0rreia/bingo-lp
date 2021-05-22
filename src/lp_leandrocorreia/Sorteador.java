@@ -53,7 +53,7 @@ public class Sorteador {
      * colunas, pois se o valor da coluna for 0 irá sortear a Biblioteca
      * "Random" de 1 até 9 e assim sucessivamente até 90.
      */
-    public void sorteioCartao(){
+    public int[][] sorteioCartao(){
         Random r = new Random();
         posicoesBranco();
         
@@ -90,6 +90,8 @@ public class Sorteador {
                 }
             }
         }
+        
+        return this.cartao;
     }
     
     

@@ -15,6 +15,8 @@ public class LP_LeandroCorreia {
 
     public static void main(String[] args) {
         
+        Interface i = new Interface();
+        
         JOptionPane.showMessageDialog(null, "\n"
             + "Bem-vindo à plataforma do Bingo\n"
             + "Desenvolvido por: Leandro Correia e Rui Silva\n\n"
@@ -27,7 +29,7 @@ public class LP_LeandroCorreia {
             + "         3. Grite 'Bingo' se tiver o cartão completo;\n"
             + "         4. Boa sorte e divirta-se!\n\n", "Bingo v2.0", JOptionPane.PLAIN_MESSAGE);
         
-        
+        i.setVisible(true);
     }
     
 }
