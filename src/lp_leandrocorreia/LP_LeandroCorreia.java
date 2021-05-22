@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lp_leandrocorreia_ruisilva;
+package lp_leandrocorreia;
 
 import javax.swing.JOptionPane;
 
@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
  *
  * @author leandroc0rreia
  */
-public class ExecutarJogo {
-    
+public class LP_LeandroCorreia {
+
     public static void main(String[] args) {
         
         JOptionPane.showMessageDialog(null, "\n"
@@ -27,12 +27,7 @@ public class ExecutarJogo {
             + "         3. Grite 'Bingo' se tiver o cartão completo;\n"
             + "         4. Boa sorte e divirta-se!\n\n", "Bingo v2.0", JOptionPane.PLAIN_MESSAGE);
         
-        Menu m = new Menu();
-        m.setVisible(true);
         
     }
+    
 }
-
-/*
-
-*/

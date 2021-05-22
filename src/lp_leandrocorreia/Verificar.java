@@ -3,40 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lp_leandrocorreia_ruisilva;
-
-import javax.swing.JOptionPane;
+package lp_leandrocorreia;
 
 /**
  *
  * @author leandroc0rreia
  */
 public class Verificar {
-    
-    private int num;
-    private int confirm;
-    private boolean ganhou;
-    private boolean novojogo;
-    private int cartao[][] = new int[9][3];
-    private int cartaozero[][] = new int[9][3];
-
-    public Verificar() {
-        
-        
-        
-    }
-    
-    public void existeLetras(){
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.println(cartao[i][j]);
-            }
-        }
-    }
-    
-    public void setConfirm(int confirm) {
-        this.confirm = confirm;
-    }
     
 //    public void veriGanhou(){
 //    Numeros nu = new Numeros();
