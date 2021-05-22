@@ -33,7 +33,35 @@ public class Interface extends javax.swing.JFrame {
         
         
     }
+    
+    private void sortear(){
+        s.sorteioCartao();
+        
+        int k = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                cartao[k].setText(String.valueOf(s.cartao[i][j]));
+                if (cartao[k].getText().equals("0")) cartao[k].setText("");
+                k++;
+            }
+        }
+    }
+    
+    private void verificarNumCartao(){
+        
+        for (int i = 0; i < 27; i++) {
+            try {
+                if ( (Integer.parseInt(cartao[i].getText()) >= 90) && (Integer.parseInt(cartao[i].getText()) <= 1) ) {
+                    System.out.println("Erro");
+                }
+            } catch (Exception e) {
 
+            }
+            
+        }
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,7 +104,7 @@ public class Interface extends javax.swing.JFrame {
         Jogo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bingo v2.0 - Menu");
+        setTitle("Bingo v2.0");
         setResizable(false);
 
         jButton2.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
@@ -250,6 +278,11 @@ public class Interface extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jButton5.setText("Começar Jogo");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CriarCartaoLayout = new javax.swing.GroupLayout(CriarCartao);
         CriarCartao.setLayout(CriarCartaoLayout);
@@ -420,14 +453,14 @@ public class Interface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         Menu.setVisible(false);
         setSize(1068, 550);
         CriarCartao.setVisible(true);
         this.setLocationRelativeTo(null);
-        sort();
+        sortear();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -436,27 +469,18 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        sort();
+        sortear();
     }//GEN-LAST:event_jButton3ActionPerformed
-    
-    private void sort(){
-        s.sorteioCartao();
-        
-        int k = 0;
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 3; j++) {
-                cartao[k].setText(String.valueOf(s.cartao[i][j]));
-                if (cartao[k].getText().equals("0")) cartao[k].setText("");
-                k++;
-            }
-        }
-    }
-    
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         for (JTextField jTextField : cartao) {
             jTextField.setEditable(true);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        verificarNumCartao();
+    }//GEN-LAST:event_jButton5ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CriarCartao;
