@@ -19,7 +19,7 @@ public class LP_LeandroCorreia {
         
         JOptionPane.showMessageDialog(null, "\n"
             + "Bem-vindo à plataforma do Bingo\n"
-            + "Desenvolvido por: Leandro Correia e Rui Silva\n\n"
+            + "Desenvolvido por: Leandro Correia\n\n"
             + "Bingo é um jogo de azar divertido no qual todos podem participar.\n"
             + "Nele, usa-se um cartão de quinze posições em que os números são sorteados\n"
             + "aleatoriamente, se conseguir preencher todos os quadrados do jogo, GANHA!\n\n"

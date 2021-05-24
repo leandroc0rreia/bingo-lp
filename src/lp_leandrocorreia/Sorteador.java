@@ -49,9 +49,10 @@ public class Sorteador {
     
     /**
      * O método "sorteador" realiza o sorteio de números pela matriz 9x3 (forma
-     * do cartão do bingo). Condicionando o sorteamento dos números pelas
+     * do cartão do bingo).Condicionando o sorteamento dos números pelas
      * colunas, pois se o valor da coluna for 0 irá sortear a Biblioteca
      * "Random" de 1 até 9 e assim sucessivamente até 90.
+     * @return 
      */
     public int[][] sorteioCartao(){
         Random r = new Random();
