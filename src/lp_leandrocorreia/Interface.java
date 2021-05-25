@@ -124,38 +124,41 @@ public class Interface extends javax.swing.JFrame {
     }
     
     private boolean verificarRepetido(){
-    
         
-//            if (cartao[0].getText().equals(cartao[1].getText()) || cartao[0].getText().equals(cartao[2].getText()) || cartao[1].getText().equals(cartao[2].getText())) {
-//                
-//            }
-//            if () {
-//               
-//            }
-//            if () {
-//                
-//            }
-//            if () {
-//                
-//            }
-//            if () {
-//                
-//            }
-//            if () {
-//                
-//            }
-//            if () {
-//                
-//            }
-//            if () {
-//                
-//            }
-//            if () {
-//                
-//            }
+        int check = 0;
         
-        return true;
-//  return false;
+        for (int i = 0; i < cartao.length; i=i+3) {
+            
+            if (cartao[i].getText().equals("")) {
+                
+            }else{
+                if (cartao[i].getText().equals(cartao[i+1].getText()) || cartao[i].getText().equals(cartao[i+2].getText())) {
+                    JOptionPane.showMessageDialog(null, "Números repetidos!", "Erro", 2);
+                    break;
+                }else{
+                    check = 1;
+                }
+            }
+            
+            if (cartao[i+1].getText().equals("")) { 
+            }else{
+                if (cartao[i+1].getText().equals(cartao[i+2].getText())) {
+                    JOptionPane.showMessageDialog(null, "Números repetidos!", "Erro", 2);
+                    break;
+                }else{
+                    check = 1;
+                }
+            }
+            
+            
+        }
+        
+        if (check==1){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -689,10 +692,12 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         verificarNumCartao();
-        verificarEspacosBranco();
         
         if ((verificarEspacosBranco() == true) && (verificarNumColuna() == true) && (verificarRepetido() == true)) {
             setSize(1068, 385);
+            for (JTextField jTextField : cartao) {
+                jTextField.setEditable(false);
+            }
             jButton3.setVisible(false);
             jButton4.setVisible(false);
             jButton5.setVisible(false);
