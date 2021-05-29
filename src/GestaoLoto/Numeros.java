@@ -5,6 +5,7 @@
  */
 package GestaoLoto;
 
+import java.util.ArrayList;
 import java.util.Random;
 /**
  *
@@ -12,10 +13,12 @@ import java.util.Random;
  */
 public class Numeros {
     
+    private ArrayList<Integer> lista;
     private Random r;
     private int num;
 
     public Numeros() {
+        lista = new ArrayList<Integer>();
         r = new Random();
         this.num = num;
               
@@ -26,6 +29,20 @@ public class Numeros {
     }
     
     public void sortNumero(){
-        this.num = r.nextInt(91 - 1) + 1;
+        
+        if (lista.size() == 0) {
+            this.num = r.nextInt(91 - 1) + 1;
+            lista.add(num);
+        }else{
+            this.num = r.nextInt(91 - 1) + 1;
+            for (int i = 0; i < lista.size(); i++) {
+                if (num == lista.get(i)) {
+                    this.num = r.nextInt(91 - 1) + 1;
+                    i = 0;
+                }
+            }
+            lista.add(num);
+        }
+        
     }
 }

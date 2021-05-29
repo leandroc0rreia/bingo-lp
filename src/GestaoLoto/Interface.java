@@ -343,25 +343,14 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        if (jList2.getModel().getSize() == 0) {
+        
+        if (jList2.getModel().getSize()==90) {
+            JOptionPane.showMessageDialog(null, "Não existe mais bolas/números a sortear", "Erro", 2);
+        }else{
             n.sortNumero();
             jLabel5.setText(String.valueOf(n.getNum()));
             listaNum.addElement(String.valueOf(n.getNum()));
             jList2.setModel(listaNum);
-        }else{
-            n.sortNumero();
-            jLabel5.setText(String.valueOf(n.getNum()));
-            for (int i = 0; i < jList2.getModel().getSize(); i++) {
-                if (jList2.getModel().getElementAt(i).equals(String.valueOf(n.getNum()))) {
-                    n.sortNumero();
-                    jLabel5.setText(String.valueOf(n.getNum()));
-                    i = 0;
-                }else{
-                    listaNum.addElement(String.valueOf(n.getNum()));
-                    jList2.setModel(listaNum);
-                }
-            }
         }
         
         
