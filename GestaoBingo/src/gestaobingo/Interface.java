@@ -1,4 +1,3 @@
-
 package gestaobingo;
 
 import java.awt.event.KeyEvent;
@@ -12,34 +11,44 @@ import javax.swing.JOptionPane;
  */
 public class Interface extends javax.swing.JFrame {
 
-    //https://www.youtube.com/watch?v=5a4NK65kELk
+    /**
+     * Na falta informação de como obter os elementos da lista e adicionar os
+     * elementos à lista, tirei como referência o código indicado a baixo do
+     * canal de Youtube Tutus Funny
+     * Link:https://www.youtube.com/watch?v=5a4NK65kELk
+     */
     private DefaultListModel listaAposta;
     private DefaultListModel listaAposta2;
     private DefaultListModel listaNum;
-    private HashMap<String,String> apostador;
+    private HashMap<String, String> apostador;
     private Numeros n;
-    
+
+    /**
+     * Construtor da classe Interface do Projeto GestaoBingo
+     */
     public Interface() {
-        
-        apostador = new HashMap<String,String>();
+
+        apostador = new HashMap<String, String>();
         listaAposta = new DefaultListModel();
         listaAposta2 = new DefaultListModel();
         listaNum = new DefaultListModel();
         n = new Numeros();
-        
+
         initComponents();
-        
+
         Vencedor.setVisible(false);
         QuemGanhou.setVisible(false);
         Jogo.setVisible(false);
         Apostas.setVisible(false);
         Menu.setVisible(true);
-        setSize(700,550);
+        setSize(700, 550);
         this.setLocationRelativeTo(null);
-        
+
     }
 
-   
+    /**
+     * Código automático gerado pelo JFrame Form
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -469,117 +478,170 @@ public class Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Ao pressionar o botão desativa a interface do Menu e vai para a interface
+     * Apostas
+     *
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Menu.setVisible(false);
         Apostas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    /**
+     * Adiciona o nome e montante à lista de apostadores
+     *
+     * @param evt
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Adiciona o texto de jTextField1 e jTextField2 para o HashMap apostador
         apostador.put(jTextField1.getText(), jTextField2.getText());
-        
-        
+
+        //Condição para o jTextField1 e jTextField2 serem preenchidos obrigatóriamente
         if (jTextField1.getText().equals("") || jTextField2.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor indique o nome e o valor a apostar", "Erro", 2);
-        }else{
+        } else {
             listaAposta.addElement(jTextField1.getText() + " - " + jTextField2.getText() + "€");
             jList1.setModel(listaAposta);
 
             jTextField1.setText("");
             jTextField2.setText("");
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jList1ComponentAdded
 
     }//GEN-LAST:event_jList1ComponentAdded
 
+    /**
+     * Esta parte do código foi adaptada por mim mas tirei como referência o
+     * vídeo de Youtube de ProgrammingKnowledge
+     * Link: https://www.youtube.com/watch?v=9B5ZgItFxNA
+     *
+     * @param evt
+     */
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-        char c=evt.getKeyChar();
-        if ( !(Character.isDigit(c)) || c==KeyEvent.VK_BACK_SPACE || c==KeyEvent.VK_DELETE) {
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
 
+    /**
+     * Ao pressionar o botão desativa a interface Apostas e ativa a interface
+     * Jogo Na ausência de informação de como saber o tamanho da lista, tirei
+     * como referência o código do website indicado abaixo
+     * Link: https://forums.codeguru.com/showthread.php?35883-How-to-test-if-JList-is-empty
+     *
+     * @param evt
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        //https://forums.codeguru.com/showthread.php?35883-How-to-test-if-JList-is-empty
-        if (jList1.getModel().getSize()==0) {
+
+        //Condição para verificar se houve alguma aposta
+        if (jList1.getModel().getSize() == 0) {
             JOptionPane.showMessageDialog(null, "Impossível iniciar sem primeiro apostar", "Erro", 2);
-        }else{
+        } else {
+            //Caso haja alguma aposta desativa a interface Apostas e ativa a interface Jogo
             Apostas.setVisible(false);
             Jogo.setVisible(true);
         }
-        
-        
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * Ao pressionar o botão sorteia um número e adiciona-o à lista
+     *
+     * @param evt
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-        
-        
-        if (jList2.getModel().getSize()==90) {
+
+        //Condição para o limite de números a serem sorteados
+        if (jList2.getModel().getSize() == 90) {
             JOptionPane.showMessageDialog(null, "Não existe mais bolas/números a sortear", "Erro", 2);
-        }else{
+        } else {
             n.sortNumero();
             jLabel5.setText(String.valueOf(n.getNum()));
             listaNum.addElement(String.valueOf(n.getNum()));
             jList2.setModel(listaNum);
         }
-        
 
-        if (jList2.getModel().getSize()==15) {
+        //Ao sortear 15 números o botão de terminar o jogo ativa
+        if (jList2.getModel().getSize() == 15) {
             jButton5.setEnabled(true);
         }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+     * Ao pressionar desativa a interface Jogo e ativa a interface QuemGanhou
+     *
+     * @param evt
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Jogo.setVisible(false);
-        
+
+        //Adiciona todos os elementos pertencentes ao HashMap apostaddor, só retornando o Nome
         for (String key : apostador.keySet()) {
             listaAposta2.addElement(key);
             jList3.setModel(listaAposta2);
         }
+
         QuemGanhou.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
-        
+
     }//GEN-LAST:event_jList3MouseClicked
 
+    /**
+     * Ao pressionar o botão desativa a interface QuemGanhhou e ativa a
+     * interface Vencedor. Verificando se existe um apostador selecionado
+     *
+     * @param evt
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
+
+        //Condição para ver se existe um apostador selecionado
         if (jList3.getSelectedValue() == null) {
             JOptionPane.showMessageDialog(null, "Selecione o vencedor", "Erro", 2);
-        }else{
+        } else {
             QuemGanhou.setVisible(false);
-            
+
             jLabel8.setText(String.valueOf(jList3.getSelectedValue()) + " ganhou o jogo do bingo com uma aposta de " + apostador.get(jList3.getSelectedValue()) + "€.");
-            
-            int total=0;
+
+            //Soma do ganho total do apostador
+            int total = 0;
             for (String key : apostador.keySet()) {
                 total = total + Integer.parseInt(apostador.get(key));
             }
             jLabel10.setText("Ganho total: " + total + "€");
-            
+
             Vencedor.setVisible(true);
         }
-        
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    /**
+     * Ao pressionar o Botão coloca os campos no seu estado inicial. Desativa a
+     * interface Vencedor e ativa a interface Menu
+     *
+     * @param evt
+     */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Vencedor.setVisible(false);
-        
+
         apostador.clear();
         listaAposta.clear();
         listaAposta2.clear();
@@ -587,15 +649,20 @@ public class Interface extends javax.swing.JFrame {
         n.apagarLista();
         jButton5.setEnabled(false);
         jLabel5.setText("");
-        
+
         Menu.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    /**
+     * Ao pressionar o Botão sai do Gestor do Bingo
+     *
+     * @param evt
+     */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Apostas;
     private javax.swing.JPanel Jogo;
