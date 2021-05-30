@@ -45,4 +45,8 @@ public class Numeros {
         }
         
     }
+    
+    public void apagarLista(){
+        this.lista.clear();
+    }
 }
