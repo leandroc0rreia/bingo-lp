@@ -13,28 +13,30 @@ public class Sorteador {
     public int cartaozero[][];
     private int colunaalea;
 
+    /**
+     * Inicia/Constroi a classe Sorteador
+     */
     public Sorteador() {
         
         this.cartao = new int[9][3];
         this.cartaozero = new int[9][3];
         
-        
-        
     }
     
     /**
-     * Sorteia de maneira aleatória os espaços em branco no cartão original e 
-     * check.
+     * Sorteia aleatóriamente os espaços em branco no cartão.
      */
     private void posicoesBranco(){
         Random r = new Random();
         
+        //Define todas as posições do cartão como 0
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 3; j++) {
                 this.cartao[i][j] = 0;
             }
         }
         
+        //Define aleatóriamente 5 posições por linha com o valor 1
         for (int i = 0; i < 3 ; i++) {
             for (int j = 0; j < 5; j++) {
                 colunaalea = r.nextInt(9);
@@ -48,11 +50,8 @@ public class Sorteador {
     }
     
     /**
-     * O método "sorteador" realiza o sorteio de números pela matriz 9x3 (forma
-     * do cartão do bingo).Condicionando o sorteamento dos números pelas
-     * colunas, pois se o valor da coluna for 0 irá sortear a Biblioteca
-     * "Random" de 1 até 9 e assim sucessivamente até 90.
-     * @return 
+     * Sorteia números por cada posição, com a regra de cada coluna ser da mesma dezena
+     * @return cartao
      */
     public int[][] sorteioCartao(){
         Random r = new Random();
