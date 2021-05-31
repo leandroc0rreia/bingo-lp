@@ -40,7 +40,7 @@ public class Interface extends javax.swing.JFrame {
         Jogo.setVisible(false);
         Bingo.setVisible(false);
 
-        ImageIcon imagem = new ImageIcon("src/img/imagem.png");
+        ImageIcon imagem = new ImageIcon("imagem.png");
         img.setIcon(imagem);
 
     }
