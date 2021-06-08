@@ -217,7 +217,6 @@ public class Interface extends javax.swing.JFrame {
     private void initComponents() {
 
         Menu = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         img = new javax.swing.JLabel();
         CriarCartao = new javax.swing.JPanel();
@@ -288,14 +287,6 @@ public class Interface extends javax.swing.JFrame {
         setTitle("Bingo v2.0");
         setResizable(false);
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
-        jButton2.setText("Sair");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jButton1.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
         jButton1.setText("Jogar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -310,32 +301,32 @@ public class Interface extends javax.swing.JFrame {
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(img, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(img, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(img, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
+        CriarCartao.setBackground(new java.awt.Color(0, 170, 255));
+
         c1.setEditable(false);
-        c1.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c1.setBackground(new java.awt.Color(0, 170, 255));
+        c1.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c1KeyTyped(evt);
@@ -343,8 +334,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c2.setEditable(false);
-        c2.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c2.setBackground(new java.awt.Color(0, 170, 255));
+        c2.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c2KeyTyped(evt);
@@ -352,8 +345,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c3.setEditable(false);
-        c3.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c3.setBackground(new java.awt.Color(0, 170, 255));
+        c3.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c3KeyTyped(evt);
@@ -361,8 +356,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c4.setEditable(false);
-        c4.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c4.setBackground(new java.awt.Color(0, 170, 255));
+        c4.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c4KeyTyped(evt);
@@ -370,8 +367,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c5.setEditable(false);
-        c5.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c5.setBackground(new java.awt.Color(0, 170, 255));
+        c5.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c5.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c5KeyTyped(evt);
@@ -379,8 +378,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c6.setEditable(false);
-        c6.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c6.setBackground(new java.awt.Color(0, 170, 255));
+        c6.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c6KeyTyped(evt);
@@ -388,8 +389,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c7.setEditable(false);
-        c7.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c7.setBackground(new java.awt.Color(0, 170, 255));
+        c7.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c7.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c7KeyTyped(evt);
@@ -397,8 +400,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c8.setEditable(false);
-        c8.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c8.setBackground(new java.awt.Color(0, 170, 255));
+        c8.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c8KeyTyped(evt);
@@ -406,8 +411,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c9.setEditable(false);
-        c9.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c9.setBackground(new java.awt.Color(0, 170, 255));
+        c9.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c9.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c9KeyTyped(evt);
@@ -415,8 +422,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c10.setEditable(false);
-        c10.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c10.setBackground(new java.awt.Color(0, 170, 255));
+        c10.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c10.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c10KeyTyped(evt);
@@ -424,8 +433,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c11.setEditable(false);
-        c11.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c11.setBackground(new java.awt.Color(0, 170, 255));
+        c11.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c11.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c11KeyTyped(evt);
@@ -433,8 +444,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c12.setEditable(false);
-        c12.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c12.setBackground(new java.awt.Color(0, 170, 255));
+        c12.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c12.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c12.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c12KeyTyped(evt);
@@ -442,8 +455,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c13.setEditable(false);
-        c13.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c13.setBackground(new java.awt.Color(0, 170, 255));
+        c13.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c13.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c13.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c13KeyTyped(evt);
@@ -451,8 +466,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c14.setEditable(false);
-        c14.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c14.setBackground(new java.awt.Color(0, 170, 255));
+        c14.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c14.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c14.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c14KeyTyped(evt);
@@ -460,8 +477,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c15.setEditable(false);
-        c15.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c15.setBackground(new java.awt.Color(0, 170, 255));
+        c15.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c15.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c15.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c15KeyTyped(evt);
@@ -469,8 +488,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c16.setEditable(false);
-        c16.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c16.setBackground(new java.awt.Color(0, 170, 255));
+        c16.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c16.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c16.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c16KeyTyped(evt);
@@ -478,8 +499,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c17.setEditable(false);
-        c17.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c17.setBackground(new java.awt.Color(0, 170, 255));
+        c17.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c17.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c17.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c17KeyTyped(evt);
@@ -487,8 +510,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c18.setEditable(false);
-        c18.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c18.setBackground(new java.awt.Color(0, 170, 255));
+        c18.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c18.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c18.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c18KeyTyped(evt);
@@ -496,8 +521,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c19.setEditable(false);
-        c19.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c19.setBackground(new java.awt.Color(0, 170, 255));
+        c19.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c19.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c19.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c19KeyTyped(evt);
@@ -505,8 +532,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c20.setEditable(false);
-        c20.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c20.setBackground(new java.awt.Color(0, 170, 255));
+        c20.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c20.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c20.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c20KeyTyped(evt);
@@ -514,8 +543,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c21.setEditable(false);
-        c21.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c21.setBackground(new java.awt.Color(0, 170, 255));
+        c21.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c21.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c21.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c21KeyTyped(evt);
@@ -523,8 +554,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c22.setEditable(false);
-        c22.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c22.setBackground(new java.awt.Color(0, 170, 255));
+        c22.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c22.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c22.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c22KeyTyped(evt);
@@ -532,8 +565,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c23.setEditable(false);
-        c23.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c23.setBackground(new java.awt.Color(0, 170, 255));
+        c23.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c23.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c23.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c23KeyTyped(evt);
@@ -541,8 +576,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c24.setEditable(false);
-        c24.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c24.setBackground(new java.awt.Color(0, 170, 255));
+        c24.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c24.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c24.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c24KeyTyped(evt);
@@ -550,8 +587,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c25.setEditable(false);
-        c25.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c25.setBackground(new java.awt.Color(0, 170, 255));
+        c25.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c25.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c25.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c25KeyTyped(evt);
@@ -559,8 +598,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c26.setEditable(false);
-        c26.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c26.setBackground(new java.awt.Color(0, 170, 255));
+        c26.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c26.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c26.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c26KeyTyped(evt);
@@ -568,8 +609,10 @@ public class Interface extends javax.swing.JFrame {
         });
 
         c27.setEditable(false);
-        c27.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        c27.setBackground(new java.awt.Color(0, 170, 255));
+        c27.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         c27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        c27.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(3, 0, 181), new java.awt.Color(6, 1, 182)));
         c27.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 c27KeyTyped(evt);
@@ -1141,7 +1184,7 @@ public class Interface extends javax.swing.JFrame {
                     .addGroup(BingoLayout.createSequentialGroup()
                         .addGap(218, 218, 218)
                         .addComponent(jButton6)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         BingoLayout.setVerticalGroup(
             BingoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1152,7 +1195,7 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(80, 80, 80)
                 .addComponent(jButton6)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1219,15 +1262,6 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
-     * Sai da plataforma do Bingo, desligando o programa.
-     *
-     * @param evt
-     */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
      * Sorteia aleatoriamente o cartão.
      *
      * @param evt
@@ -1243,6 +1277,7 @@ public class Interface extends javax.swing.JFrame {
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         for (JTextField jTextField : cartao) {
+            jTextField.setBackground(Color.white);
             jTextField.setEditable(true);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -1258,7 +1293,7 @@ public class Interface extends javax.swing.JFrame {
         verificarNumCartao();
 
         if ((verificarEspacosBranco() == true) && (verificarNumColuna() == true) && (verificarRepetido() == true)) {
-            setSize(1068, 385);
+            setSize(1068, 395);
             CriarCartao.setVisible(false);
 
             //Define o texto do cartao para o cartaoToggle (cartao de jogo).
@@ -1828,7 +1863,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JToggleButton ct9;
     private javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
