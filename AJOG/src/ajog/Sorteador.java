@@ -1,5 +1,5 @@
 
-package agj;
+package ajog;
 
 import java.util.Random;
 
