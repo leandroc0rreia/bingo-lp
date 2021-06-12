@@ -37,10 +37,11 @@ public class Interface extends javax.swing.JFrame {
         setSize(607, 500);
         this.setLocationRelativeTo(null);
         CriarCartao.setVisible(false);
+        Aposta.setVisible(false);
         Jogo.setVisible(false);
         Bingo.setVisible(false);
 
-        ImageIcon imagem = new ImageIcon("imagem.png");
+        ImageIcon imagem = new ImageIcon("src/ajog/imagem.png");
         img.setIcon(imagem);
 
     }
@@ -250,6 +251,11 @@ public class Interface extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        Aposta = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         Jogo = new javax.swing.JPanel();
         ct3 = new javax.swing.JToggleButton();
         ct1 = new javax.swing.JToggleButton();
@@ -764,6 +770,65 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
+        Aposta.setPreferredSize(new java.awt.Dimension(607, 485));
+
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Quanto vai apostar?");
+
+        jTextField1.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 13)); // NOI18N
+        jLabel4.setText("Máximo: 1500 €");
+
+        jButton2.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        jButton2.setText("Apostar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ApostaLayout = new javax.swing.GroupLayout(Aposta);
+        Aposta.setLayout(ApostaLayout);
+        ApostaLayout.setHorizontalGroup(
+            ApostaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ApostaLayout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ApostaLayout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addGroup(ApostaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(ApostaLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ApostaLayout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel4)))
+                .addGap(74, 74, 74))
+        );
+        ApostaLayout.setVerticalGroup(
+            ApostaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ApostaLayout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(58, 58, 58)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
         Jogo.setBackground(new java.awt.Color(0, 170, 255));
 
         ct3.setBackground(new java.awt.Color(140, 224, 254));
@@ -1220,6 +1285,11 @@ public class Interface extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(Bingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(Aposta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1240,6 +1310,11 @@ public class Interface extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(Bingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(Aposta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -1293,7 +1368,7 @@ public class Interface extends javax.swing.JFrame {
         verificarNumCartao();
 
         if ((verificarEspacosBranco() == true) && (verificarNumColuna() == true) && (verificarRepetido() == true)) {
-            setSize(1068, 395);
+            setSize(607, 485);
             CriarCartao.setVisible(false);
 
             //Define o texto do cartao para o cartaoToggle (cartao de jogo).
@@ -1311,8 +1386,8 @@ public class Interface extends javax.swing.JFrame {
                 }
             }
 
-            Jogo.setVisible(true);
-
+            Aposta.setVisible(true);
+            setLocationRelativeTo(null);
             //Condição para colorir todos os números do cartao 
             for (JToggleButton jToggleButton : cartaoToggle) {
                 if (!(jToggleButton.getText().equals(""))) {
@@ -1801,8 +1876,29 @@ public class Interface extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        if ((Integer.parseInt(jTextField1.getText()) > 1500) || (Integer.parseInt(jTextField1.getText()) <= 0)) {
+            JOptionPane.showMessageDialog(null, "Aposte entre 1 e 1500€", "Bingo v3.0", 2);
+        }else{
+            Aposta.setVisible(false);
+            setSize(1068, 395);
+            setLocationRelativeTo(null);
+            Jogo.setVisible(true);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char c = evt.getKeyChar();
+        if (jTextField1.getText().length() > 3 || !(Character.isDigit(c)) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Aposta;
     private javax.swing.JPanel Bingo;
     private javax.swing.JPanel CriarCartao;
     private javax.swing.JPanel Jogo;
@@ -1863,11 +1959,15 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JToggleButton ct9;
     private javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
