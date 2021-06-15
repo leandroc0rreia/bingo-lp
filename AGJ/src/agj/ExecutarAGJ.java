@@ -20,6 +20,7 @@ public class ExecutarAGJ {
         
         i.setVisible(true);
         
+       // Servidor servidor = new Servidor(5000);
     }
     
 }

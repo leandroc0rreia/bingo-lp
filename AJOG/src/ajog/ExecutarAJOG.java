@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author leandroc0rreia
  */
-public class LP_LeandroCorreia {
+public class ExecutarAJOG {
 
     public static void main(String[] args) {
         
@@ -29,6 +29,7 @@ public class LP_LeandroCorreia {
             + "         3. Grite 'Bingo' se tiver o cartão completo;\n"
             + "         4. Boa sorte e divirta-se!\n\n", "Bingo v2.0", JOptionPane.PLAIN_MESSAGE);
         
+        Jogador jogador = new Jogador("127.0.0.1", 5000);
         i.setVisible(true);
     }
     
