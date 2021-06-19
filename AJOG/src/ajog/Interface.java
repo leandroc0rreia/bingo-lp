@@ -88,20 +88,48 @@ public class Interface extends javax.swing.JFrame {
      * @return
      */
     private boolean verificarEspacosBranco() {
-        int check = 0;
-
-        for (JTextField jTextField : cartao) {
+        int linha1 = 0;
+        int linha2 = 0;
+        int linha3 = 0;
+        int soma = 0;
+        
+        JTextField[] cartaolinha1 = new JTextField[]{c1,c4,c7,c10,c13,c16,c19,c22,c25};
+        JTextField[] cartaolinha2 = new JTextField[]{c2,c5,c8,c11,c14,c17,c20,c23,c26};
+        JTextField[] cartaolinha3 = new JTextField[]{c3,c6,c9,c12,c15,c18,c21,c24,c27};
+        
+        for (JTextField jTextField : cartaolinha1) {
             if (jTextField.getText().equals("")) {
-                check = check + 1;
+                linha1 = linha1 + 1;
             }
         }
-
-        if (check != 12) {
-            JOptionPane.showMessageDialog(null, "O seu cartão não cumpre com 5 números por linha", "Erro", 2);
-            return false;
-        } else {
-            return true;
+        if (linha1 != 4) {
+            JOptionPane.showMessageDialog(null, "A primeira linha não cumpre com 4 espaços em branco", "Erro", 2);
         }
+        
+        for (JTextField jTextField : cartaolinha2) {
+            if (jTextField.getText().equals("")) {
+                linha2= linha2 + 1;
+            }
+        }
+        if (linha2 != 4) {
+            JOptionPane.showMessageDialog(null, "A segunda linha não cumpre com 4 espaços em branco", "Erro", 2);
+        }
+        
+        for (JTextField jTextField : cartaolinha3) {
+            if (jTextField.getText().equals("")) {
+                linha3 = linha3 + 1;
+            }
+        }
+        if (linha3 != 4) {
+            JOptionPane.showMessageDialog(null, "A terceira linha não cumpre com 4 espaços em branco", "Erro", 2); 
+        }
+        
+        if (linha1==4 && linha2==4 && linha3==4) {
+            return true;
+        }else{
+            return false;
+        }
+            
     }
 
     /**
