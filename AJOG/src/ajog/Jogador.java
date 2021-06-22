@@ -13,5 +13,8 @@ public class Jogador {
     // constructor to put ip address and port 
     public Jogador(String address, int port) throws IOException{
         
+        Socket s = new Socket(address, port);
+        
+        s.close();
     }
 }

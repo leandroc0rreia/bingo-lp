@@ -18,7 +18,6 @@ public class Interface extends javax.swing.JFrame {
      * Link:https://www.youtube.com/watch?v=5a4NK65kELk
      */
     private DefaultListModel listaAposta;
-    private DefaultListModel listaAposta2;
     private DefaultListModel listaNum;
     private HashMap<String, String> apostador;
     private Numeros n;
@@ -30,7 +29,6 @@ public class Interface extends javax.swing.JFrame {
 
         apostador = new HashMap<String, String>();
         listaAposta = new DefaultListModel();
-        listaAposta2 = new DefaultListModel();
         listaNum = new DefaultListModel();
         n = new Numeros();
 
@@ -175,7 +173,7 @@ public class Interface extends javax.swing.JFrame {
                     .addGroup(ApostasLayout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
         ApostasLayout.setVerticalGroup(
             ApostasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +182,7 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         Jogo.setPreferredSize(new java.awt.Dimension(700, 550));
@@ -251,7 +249,6 @@ public class Interface extends javax.swing.JFrame {
 
         jList3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jList3.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jList3.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jList3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList3MouseClicked(evt);
@@ -483,15 +480,7 @@ public class Interface extends javax.swing.JFrame {
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Jogo.setVisible(false);
-
-        //Adiciona todos os elementos pertencentes ao HashMap apostaddor, só retornando o Nome
-        for (String key : apostador.keySet()) {
-            listaAposta2.addElement(key);
-            jList3.setModel(listaAposta2);
-        }
-
         QuemGanhou.setVisible(true);
-
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
@@ -537,7 +526,6 @@ public class Interface extends javax.swing.JFrame {
 
         apostador.clear();
         listaAposta.clear();
-        listaAposta2.clear();
         listaNum.clear();
         n.apagarLista();
         jButton5.setEnabled(false);

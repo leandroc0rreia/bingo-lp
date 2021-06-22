@@ -17,7 +17,9 @@ public class Interface extends javax.swing.JFrame {
     private JTextField[] cartao;
     private JToggleButton[] cartaoToggle;
     private Sorteador s;
+    private Cartao cartaoClass;
     private int[][] ccartao;
+    private String[] cartaoDeFora;
 
     /**
      * Construtor da Interface
@@ -27,9 +29,17 @@ public class Interface extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        cartaoToggle = new JToggleButton[]{ct1, ct2, ct3, ct4, ct5, ct6, ct7, ct8, ct9, ct10, ct11, ct12, ct13, ct14, ct15, ct16, ct17, ct18, ct19, ct20, ct21, ct22, ct23, ct24, ct25, ct26, ct27};
+        cartaoToggle = new JToggleButton[]{ct1, ct2, ct3, ct4, ct5, ct6, ct7, ct8, ct9, ct10, ct11, ct12, ct13, ct14,
+                                        ct15, ct16, ct17, ct18, ct19, ct20, ct21, ct22, ct23, ct24, ct25, ct26, ct27};
+        
         cartao = new JTextField[]{c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27};
+        
+        cartaoDeFora = new String[]{c1.getText(),c2.getText(),c3.getText(),c4.getText(),c5.getText(),c6.getText(),c7.getText(),c8.getText(),c9.getText(),
+                                    c10.getText(),c11.getText(),c12.getText(),c13.getText(),c14.getText(),c15.getText(),c16.getText(),c17.getText(),c18.getText(),
+                                    c19.getText(),c20.getText(),c21.getText(),c22.getText(),c23.getText(),c24.getText(),c25.getText(),c26.getText(),c27.getText()};
+        
         s = new Sorteador();
+        cartaoClass = new Cartao();
         s.sorteioCartao();
         this.checkcartao = 0;
 
@@ -43,201 +53,6 @@ public class Interface extends javax.swing.JFrame {
 
         ImageIcon imagem = new ImageIcon("src/ajog/imagem.png");
         img.setIcon(imagem);
-
-    }
-
-    /**
-     * Define os números sorteados pelas respetivas linhas e colunas do cartão
-     */
-    private void sortear() {
-        s.sorteioCartao();
-
-        int k = 0;
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 3; j++) {
-                cartao[k].setText(String.valueOf(s.cartao[i][j]));
-                if (cartao[k].getText().equals("0")) {
-                    cartao[k].setText("");
-                }
-                k++;
-            }
-        }
-    }
-
-    /**
-     * Verifica se a regra de números entre 1 e 90 é cumprida. Na ausência de
-     * informação tirei como referência o código do Website w3schools, indicado
-     * abaixo. Link: https://www.w3schools.com/java/java_try_catch.asp
-     */
-    private void verificarNumCartao() {
-        for (int i = 0; i < 27; i++) {
-            try {
-                if (Integer.parseInt(cartao[i].getText()) < 1 || Integer.parseInt(cartao[i].getText()) > 90) {
-                    JOptionPane.showMessageDialog(null, "Insira números entre 1 e 90", "Erro", 2);
-                    cartao[i].setText("");
-                }
-            } catch (Exception e) {
-                cartao[i].setText("");
-            }
-        }
-    }
-
-    /**
-     * Verifica-se a regra de quatro espaços em branco por linha.
-     *
-     * @return
-     */
-    private boolean verificarEspacosBranco() {
-        int linha1 = 0;
-        int linha2 = 0;
-        int linha3 = 0;
-        int soma = 0;
-        
-        JTextField[] cartaolinha1 = new JTextField[]{c1,c4,c7,c10,c13,c16,c19,c22,c25};
-        JTextField[] cartaolinha2 = new JTextField[]{c2,c5,c8,c11,c14,c17,c20,c23,c26};
-        JTextField[] cartaolinha3 = new JTextField[]{c3,c6,c9,c12,c15,c18,c21,c24,c27};
-        
-        for (JTextField jTextField : cartaolinha1) {
-            if (jTextField.getText().equals("")) {
-                linha1 = linha1 + 1;
-            }
-        }
-        if (linha1 != 4) {
-            JOptionPane.showMessageDialog(null, "A primeira linha não cumpre com 4 espaços em branco", "Erro", 2);
-        }
-        
-        for (JTextField jTextField : cartaolinha2) {
-            if (jTextField.getText().equals("")) {
-                linha2= linha2 + 1;
-            }
-        }
-        if (linha2 != 4) {
-            JOptionPane.showMessageDialog(null, "A segunda linha não cumpre com 4 espaços em branco", "Erro", 2);
-        }
-        
-        for (JTextField jTextField : cartaolinha3) {
-            if (jTextField.getText().equals("")) {
-                linha3 = linha3 + 1;
-            }
-        }
-        if (linha3 != 4) {
-            JOptionPane.showMessageDialog(null, "A terceira linha não cumpre com 4 espaços em branco", "Erro", 2); 
-        }
-        
-        if (linha1==4 && linha2==4 && linha3==4) {
-            return true;
-        }else{
-            return false;
-        }
-            
-    }
-
-    /**
-     * Verifica-se a regra do número da dezena correspondente à sua posição por
-     * coluna.
-     *
-     * @return
-     */
-    private boolean verificarNumColuna() {
-
-        int check = 0;
-
-        for (int i = 0; i < 27; i++) {
-            if (i == 0 || i == 1 || i == 2) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 1 && Integer.parseInt(cartao[i].getText()) <= 9)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 3 || i == 4 || i == 5) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 10 && Integer.parseInt(cartao[i].getText()) <= 19)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 6 || i == 7 || i == 8) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 20 && Integer.parseInt(cartao[i].getText()) <= 29)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 9 || i == 10 || i == 11) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 30 && Integer.parseInt(cartao[i].getText()) <= 39)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 12 || i == 13 || i == 14) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 40 && Integer.parseInt(cartao[i].getText()) <= 49)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 15 || i == 16 || i == 17) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 50 && Integer.parseInt(cartao[i].getText()) <= 59)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 18 || i == 19 || i == 20) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 60 && Integer.parseInt(cartao[i].getText()) <= 69)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 21 || i == 22 || i == 23) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 70 && Integer.parseInt(cartao[i].getText()) <= 79)) {
-                    check = check + 1;
-                }
-            }
-            if (i == 24 || i == 25 || i == 26) {
-                if (cartao[i].getText().equals("") || (Integer.parseInt(cartao[i].getText()) >= 80 && Integer.parseInt(cartao[i].getText()) <= 90)) {
-                    check = check + 1;
-                }
-            }
-        }
-
-        if (check != 27) {
-            JOptionPane.showMessageDialog(null, "Cada coluna apenas pode ter números da dezena correspondente à sua posição", "Erro", 2);
-            return false;
-        } else {
-            return true;
-        }
-
-    }
-
-    /**
-     * Verifica a regra da existência de números repetidos.
-     *
-     * @return
-     */
-    private boolean verificarRepetido() {
-
-        int check = 0;
-
-        for (int i = 0; i < cartao.length; i = i + 3) {
-
-            if (cartao[i].getText().equals("")) {
-
-            } else {
-                if (cartao[i].getText().equals(cartao[i + 1].getText()) || cartao[i].getText().equals(cartao[i + 2].getText())) {
-                    JOptionPane.showMessageDialog(null, "Números repetidos!", "Erro", 2);
-                    break;
-                } else {
-                    check = 1;
-                }
-            }
-
-            if (cartao[i + 1].getText().equals("")) {
-            } else {
-                if (cartao[i + 1].getText().equals(cartao[i + 2].getText())) {
-                    JOptionPane.showMessageDialog(null, "Números repetidos!", "Erro", 2);
-                    break;
-                } else {
-                    check = 1;
-                }
-            }
-
-        }
-
-        if (check == 1) {
-            return true;
-        } else {
-            return false;
-        }
 
     }
 
@@ -1360,8 +1175,11 @@ public class Interface extends javax.swing.JFrame {
         setSize(1068, 550);
         CriarCartao.setVisible(true);
         this.setLocationRelativeTo(null);
-        sortear();
-
+        
+        cartaoClass.sortear();
+        for (int i = 0; i < cartao.length; i++) {
+            cartao[i].setText(cartaoClass.ccartao[i]);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -1370,7 +1188,10 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        sortear();
+        cartaoClass.sortear();
+        for (int i = 0; i < cartao.length; i++) {
+            cartao[i].setText(cartaoClass.ccartao[i]);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -1393,9 +1214,10 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        verificarNumCartao();
-
-        if ((verificarEspacosBranco() == true) && (verificarNumColuna() == true) && (verificarRepetido() == true)) {
+        
+        cartaoClass.setCcartao(cartaoDeFora);
+        
+        if (cartaoClass.prontoAJogar() == true) {
             setSize(607, 485);
             CriarCartao.setVisible(false);
 
@@ -1410,7 +1232,7 @@ public class Interface extends javax.swing.JFrame {
                     jtb.setBackground(new Color(0, 170, 255));
                     jtb.setEnabled(false);
                 } else {
-
+                    
                 }
             }
 
@@ -1423,7 +1245,7 @@ public class Interface extends javax.swing.JFrame {
                 }
             }
         } else {
-
+            
         }
 
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -1906,14 +1728,17 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        if ((Integer.parseInt(jTextField1.getText()) > 1500) || (Integer.parseInt(jTextField1.getText()) <= 0)) {
-            JOptionPane.showMessageDialog(null, "Aposte entre 1 e 1500€", "Bingo v3.0", 2);
+        
+        
+        if ((jTextField1.getText().equals("")) || (Integer.parseInt(jTextField1.getText()) > 1500) || (Integer.parseInt(jTextField1.getText()) <= 0)) {
+            JOptionPane.showMessageDialog(null, "Aposte entre 1 e 1500€", "Erro", 2);
         }else{
             Aposta.setVisible(false);
             setSize(1068, 395);
             setLocationRelativeTo(null);
             Jogo.setVisible(true);
         }
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

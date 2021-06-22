@@ -5,6 +5,8 @@
  */
 package agj;
 
+import java.io.IOException;
+
 /**
  *
  * @author leandroc0rreia
@@ -14,13 +16,13 @@ public class ExecutarAGJ {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         Interface i = new Interface();
         
         i.setVisible(true);
         
-       // Servidor servidor = new Servidor(5000);
+       //Servidor servidor = new Servidor(50000);
     }
     
 }

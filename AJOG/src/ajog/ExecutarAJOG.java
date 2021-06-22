@@ -5,6 +5,7 @@
  */
 package ajog;
 
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class ExecutarAJOG {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         Interface i = new Interface();
         
@@ -29,7 +30,7 @@ public class ExecutarAJOG {
             + "         3. Grite 'Bingo' se tiver o cartão completo;\n"
             + "         4. Boa sorte e divirta-se!\n\n", "Bingo v2.0", JOptionPane.PLAIN_MESSAGE);
         
-//        Jogador jogador = new Jogador("127.0.0.1", 5000);
+        //Jogador jogador = new Jogador("127.0.0.1", 50000);
         i.setVisible(true);
     }
     

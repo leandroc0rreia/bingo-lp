@@ -10,7 +10,6 @@ import java.util.Random;
 public class Sorteador {
     
     public int cartao[][];
-    public int cartaozero[][];
     private int colunaalea;
 
     /**
@@ -19,7 +18,6 @@ public class Sorteador {
     public Sorteador() {
         
         this.cartao = new int[9][3];
-        this.cartaozero = new int[9][3];
         
     }
     
