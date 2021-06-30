@@ -38,6 +38,8 @@ public class Servidor {
             
             jogador = ss.accept();
             System.out.println("[SERVER] Jogador conectado " + jogador);
+            listaJogadores.add(jogador);
+            
             
             new Thread(){
                 @Override

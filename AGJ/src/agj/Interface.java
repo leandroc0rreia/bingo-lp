@@ -1,6 +1,7 @@
 package agj;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -21,7 +22,19 @@ public class Interface extends javax.swing.JFrame {
     private DefaultListModel listaNum;
     private HashMap<String, String> apostador;
     private Numeros n;
-
+    
+    public static void main(String[] args) throws IOException {
+        
+        Interface i = new Interface();
+        
+        i.setVisible(true);
+       
+        Servidor servidor = new Servidor();
+        servidor.start(33333);
+        servidor.enviar("Caralho!");
+        
+    }
+    
     /**
      * Construtor da classe Interface do Projeto GestaoBingo
      */
