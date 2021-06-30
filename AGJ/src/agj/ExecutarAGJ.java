@@ -21,8 +21,11 @@ public class ExecutarAGJ {
         Interface i = new Interface();
         
         i.setVisible(true);
+       
+        Servidor servidor = new Servidor();
+        servidor.start(33333);
+        servidor.enviar("Caralho!");
         
-       //Servidor servidor = new Servidor(50000);
     }
     
 }

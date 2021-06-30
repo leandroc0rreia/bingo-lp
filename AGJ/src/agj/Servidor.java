@@ -3,6 +3,7 @@ package agj;
 
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -12,28 +13,79 @@ import java.util.Vector;
 public class Servidor {
     
     // initialize socket and input output streams 
-    private Socket s;
+    private Socket jogador;
     private ServerSocket ss;
-    static Vector<ServidorLidar> vec = new Vector<ServidorLidar>();
-    static int i = 0;
     
+    private ArrayList<DataInputStream> tunelReceber;
+    private ArrayList<DataOutputStream> tunelEnvio;
+    
+    private ArrayList<Socket> listaJogadores;
 
-    public Servidor(int port) throws IOException {
-       
-        try {
-            
-        } catch (Exception e) {
-        }
+    public Servidor() throws IOException {
+        listaJogadores = new ArrayList<>();
+    }
+    
+    public void start(int port) throws IOException{
+        
+        ss = new ServerSocket(port);
+        jogador = new Socket();
+        
+        tunelReceber = new ArrayList<>();
+        tunelEnvio = new ArrayList<>();
+        
+        System.out.println("[SERVER] Servidor aberto");
         while (true) {            
-            ss = new ServerSocket(port);
-       
-            System.out.println("[SERVER] Servidor aberto");
-            Socket jogador = ss.accept();
-            System.out.println("[SERVER] Jogador conectado" + jogador);
-            ServidorLidar jogadorThread = new ServidorLidar(jogador);
-            vec.add(jogadorThread);
+            
+            jogador = ss.accept();
+            System.out.println("[SERVER] Jogador conectado " + jogador);
+            
+            new Thread(){
+                @Override
+                public void run() {
+                    
+                    try {
+                        DataInputStream dis = new DataInputStream(jogador.getInputStream());
+                        DataOutputStream dos = new DataOutputStream(jogador.getOutputStream());
+                        
+                        tunelEnvio.add(dos);
+                        tunelReceber.add(dis);
+                        
+                        System.out.println("Recebi: "+dis.readUTF());
+                        while (true) {
+                            
+                        }
+                    } catch (Exception e) {
+                        
+                    }
+                    
+                    
+                }
+            }.start();
         }
-       
+        
+    }
+    
+    
+    public Vector<String> receber() throws IOException{
+        
+        Vector<String> listaReceber = new Vector<>();
+        
+        for (DataInputStream tr : tunelReceber) {
+            String mensagem = tr.readUTF();
+            listaReceber.add(mensagem);
+            System.out.println("Enviei: "+mensagem);
+        }
+        
+        return listaReceber;
+    }
+    
+    public void enviar(String msg) throws IOException{
+        
+        for (DataOutputStream te : tunelEnvio) {
+            te.writeUTF(msg);
+            System.out.println("Enviei: "+ msg);
+        }
+
     }
     
 }

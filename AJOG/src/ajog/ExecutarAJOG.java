@@ -30,8 +30,13 @@ public class ExecutarAJOG {
             + "         3. Grite 'Bingo' se tiver o cartão completo;\n"
             + "         4. Boa sorte e divirta-se!\n\n", "Bingo v2.0", JOptionPane.PLAIN_MESSAGE);
         
-        //Jogador jogador = new Jogador("127.0.0.1", 50000);
+        Jogador jogador = new Jogador("localhost", 33333);
+        jogador.start();
+        
         i.setVisible(true);
+        jogador.enviar("Mekie");
+        jogador.receber();
+        
     }
     
 }
