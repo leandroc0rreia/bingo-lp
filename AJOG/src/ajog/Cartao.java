@@ -63,8 +63,6 @@ public class Cartao {
             
         }
         
-        System.out.println(check);
-        
         if (check==15){ 
             return true;
         }else{
