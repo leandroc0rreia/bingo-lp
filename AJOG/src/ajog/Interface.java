@@ -18,8 +18,10 @@ public class Interface extends javax.swing.JFrame {
     private JToggleButton[] cartaoToggle;
     private Sorteador s;
     private Cartao cartaoClass;
-    private int[][] ccartao;
     private String[] cartaoDeFora;
+    private boolean l1;
+    private boolean l2;
+    private boolean l3;
 
     /**
      * Construtor da Interface
@@ -40,8 +42,11 @@ public class Interface extends javax.swing.JFrame {
         
         s = new Sorteador();
         cartaoClass = new Cartao();
-        s.sorteioCartao();
+        cartaoClass.sortear();
         this.checkcartao = 0;
+        this.l1 = false;
+        this.l2 = false;
+        this.l3 = false;
 
         Menu.setVisible(true);
         setSize(607, 500);
@@ -1200,6 +1205,7 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
         for (JTextField jTextField : cartao) {
             jTextField.setBackground(Color.white);
             jTextField.setEditable(true);
@@ -1215,9 +1221,13 @@ public class Interface extends javax.swing.JFrame {
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-        cartaoClass.setCcartao(cartaoDeFora);
+        cartaoDeFora = new String[]{c1.getText(),c2.getText(),c3.getText(),c4.getText(),c5.getText(),c6.getText(),c7.getText(),c8.getText(),c9.getText(),
+                                    c10.getText(),c11.getText(),c12.getText(),c13.getText(),c14.getText(),c15.getText(),c16.getText(),c17.getText(),c18.getText(),
+                                    c19.getText(),c20.getText(),c21.getText(),c22.getText(),c23.getText(),c24.getText(),c25.getText(),c26.getText(),c27.getText()};
         
-        if (cartaoClass.prontoAJogar() == true) {
+        cartaoClass.receberCcartao(cartaoDeFora);
+        
+        if (cartaoClass.prontoAJogar(cartaoDeFora) == true) {
             setSize(607, 485);
             CriarCartao.setVisible(false);
 
@@ -1249,18 +1259,70 @@ public class Interface extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
+    /**
+     * Confirmar linha completada
+     */
+    public void linhaCompleta(){
+        int linha1 = 0;
+        int linha2 = 0;
+        int linha3 = 0;
+        
+        //Conta as posicoes selecionadas por linha
+        for (int i = 0; i < cartaoToggle.length; i=i+3) {
+            if (cartaoToggle[i].isSelected()) {
+                linha1++;
+            }
+        }
+        for (int i = 1; i < cartaoToggle.length; i=i+3) {
+            if (cartaoToggle[i].isSelected()) {
+                linha2++;
+            }
+        }
+        for (int i = 2; i < cartaoToggle.length; i=i+3) {
+            if (cartaoToggle[i].isSelected()) {
+                linha3++;
+            }
+        }
+        
+        if (l1==false) {
+            if (linha1==5) {
+                JOptionPane.showMessageDialog(null, "1ª Linha Completada", "Aviso!", 1);
+                l1 = true;
+            }
+        }
+        if (l2==false) {
+            if (linha2==5) {
+                JOptionPane.showMessageDialog(null, "2ª Linha Completada", "Aviso!", 1);
+                l2 = true;
+            }
+        }
+        if (l3==false) {
+            if (linha3==5) {
+                JOptionPane.showMessageDialog(null, "3ª Linha Completada", "Aviso!", 1);
+                l3 = true;
+            }
+        }
+        
+    }
+    
     /**
      * Verifica se todos os números do cartão foram selecionados, para fazer
      * Bingo.
      */
     public void fazerBingo() {
+        
+        linhaCompleta();
         if (checkcartao == 15) {
 
             CriarCartao.setVisible(false);
             Jogo.setVisible(false);
 
             Bingo.setVisible(true);
+            setSize(607, 500);
+            this.setLocationRelativeTo(null);
+            setSize(607, 500);
+            this.setLocationRelativeTo(null);
             setSize(607, 500);
             this.setLocationRelativeTo(null);
         }
@@ -1720,8 +1782,15 @@ public class Interface extends javax.swing.JFrame {
             jToggleButton.setSelected(false);
             jToggleButton.setEnabled(true);
         }
+        for (JTextField jTF : cartao) {
+            jTF.setEditable(false);
+        }
         this.checkcartao = 0;
-
+        this.l1 = false;
+        this.l2 = false;
+        this.l3 = false;
+        jTextField1.setText("");
+        
         Menu.setVisible(true);
 
     }//GEN-LAST:event_jButton6ActionPerformed
