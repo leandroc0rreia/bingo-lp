@@ -3,6 +3,8 @@ package ajog;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -23,40 +25,47 @@ public class Interface extends javax.swing.JFrame {
     private boolean l1;
     private boolean l2;
     private boolean l3;
+    private Jogador jogador;
 
     public static void main(String[] args) throws IOException {
         
         Interface i = new Interface();
         
-        JOptionPane.showMessageDialog(null, "\n"
-            + "Bem-vindo à plataforma do Bingo\n"
-            + "Desenvolvido por: Leandro Correia\n\n"
-            + "Bingo é um jogo de azar divertido no qual todos podem participar.\n"
-            + "Nele, usa-se um cartão de quinze posições em que os números são sorteados\n"
-            + "aleatoriamente, se conseguir preencher todos os quadrados do jogo, GANHA!\n\n"
-            + "Regras:\n\n"
-            + "         1. Visualize os números do seu cartão;\n"
-            + "         2. Introduza o número sorteado exteriormente;\n"
-            + "         3. Grite 'Bingo' se tiver o cartão completo;\n"
-            + "         4. Boa sorte e divirta-se!\n\n", "Bingo v2.0", JOptionPane.PLAIN_MESSAGE);
-        
-        Jogador jogador = new Jogador("localhost", 33333);
-        jogador.start();
+//        JOptionPane.showMessageDialog(null, "\n"
+//            + "Bem-vindo à plataforma do Bingo\n"
+//            + "Desenvolvido por: Leandro Correia\n\n"
+//            + "Bingo é um jogo de azar divertido no qual todos podem participar.\n"
+//            + "Nele, usa-se um cartão de quinze posições em que os números são sorteados\n"
+//            + "aleatoriamente, se conseguir preencher todos os quadrados do jogo, GANHA!\n\n"
+//            + "Regras:\n\n"
+//            + "         1. Visualize os números do seu cartão;\n"
+//            + "         2. Introduza o número sorteado exteriormente;\n"
+//            + "         3. Grite 'Bingo' se tiver o cartão completo;\n"
+//            + "         4. Boa sorte e divirta-se!\n\n", "Bingo v2.0", JOptionPane.PLAIN_MESSAGE);
         
         i.setVisible(true);
-        jogador.enviar("Mekie");
-        jogador.receber();
         
     }
     
     /**
      * Construtor da Interface
      */
-    public Interface() {
+    public Interface() throws IOException {
 
         initComponents();
         this.setLocationRelativeTo(null);
-
+        
+        jogador = new Jogador("localhost", 33333);
+        
+        new Thread(
+                new Runnable(){
+                @Override
+                    public void run() {
+                        jogador.start();
+                    }
+                }
+        ).start();
+        
         cartaoToggle = new JToggleButton[]{ct1, ct2, ct3, ct4, ct5, ct6, ct7, ct8, ct9, ct10, ct11, ct12, ct13, ct14,
                                         ct15, ct16, ct17, ct18, ct19, ct20, ct21, ct22, ct23, ct24, ct25, ct26, ct27};
         
@@ -1201,15 +1210,22 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        Menu.setVisible(false);
-        setSize(1068, 550);
-        CriarCartao.setVisible(true);
-        this.setLocationRelativeTo(null);
         
-        cartaoClass.sortear();
-        for (int i = 0; i < cartao.length; i++) {
-            cartao[i].setText(cartaoClass.ccartao[i]);
+        try {
+            jogador.enviar("");
+            jogador.receber();
+            
+            Menu.setVisible(false);
+            setSize(1068, 550);
+            CriarCartao.setVisible(true);
+            this.setLocationRelativeTo(null);
+            
+            cartaoClass.sortear();
+            for (int i = 0; i < cartao.length; i++) {
+                cartao[i].setText(cartaoClass.ccartao[i]);
+            }
+        } catch (IOException ex) {
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1246,7 +1262,7 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
+    
         cartaoDeFora = new String[]{c1.getText(),c2.getText(),c3.getText(),c4.getText(),c5.getText(),c6.getText(),c7.getText(),c8.getText(),c9.getText(),
                                     c10.getText(),c11.getText(),c12.getText(),c13.getText(),c14.getText(),c15.getText(),c16.getText(),c17.getText(),c18.getText(),
                                     c19.getText(),c20.getText(),c21.getText(),c22.getText(),c23.getText(),c24.getText(),c25.getText(),c26.getText(),c27.getText()};
@@ -1280,6 +1296,8 @@ public class Interface extends javax.swing.JFrame {
                     jToggleButton.setBackground(new Color(222, 222, 222));
                 }
             }
+            
+            
         } else {
             
         }
@@ -1823,15 +1841,20 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        
-        
         if ((jTextField1.getText().equals("")) || (Integer.parseInt(jTextField1.getText()) > 1500) || (Integer.parseInt(jTextField1.getText()) <= 0)) {
             JOptionPane.showMessageDialog(null, "Aposte entre 1 e 1500€", "Erro", 2);
         }else{
-            Aposta.setVisible(false);
-            setSize(1068, 395);
-            setLocationRelativeTo(null);
-            Jogo.setVisible(true);
+            
+            try {
+                if (jogador.receber().equals("comecou")) {
+                    Aposta.setVisible(false);
+                    setSize(1068, 395);
+                    setLocationRelativeTo(null);
+                    Jogo.setVisible(true);
+                }
+            } catch (IOException ex) {
+                
+            }
         }
         
 

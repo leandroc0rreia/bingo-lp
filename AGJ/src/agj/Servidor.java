@@ -52,7 +52,6 @@ public class Servidor {
                         tunelEnvio.add(dos);
                         tunelReceber.add(dis);
                         
-                        System.out.println("Recebi: "+dis.readUTF());
                         while (true) {
                             
                         }

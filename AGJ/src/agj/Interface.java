@@ -1,8 +1,9 @@
 package agj;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -22,6 +23,7 @@ public class Interface extends javax.swing.JFrame {
     private DefaultListModel listaNum;
     private HashMap<String, String> apostador;
     private Numeros n;
+    private Servidor servidor;
     
     public static void main(String[] args) throws IOException {
         
@@ -29,17 +31,32 @@ public class Interface extends javax.swing.JFrame {
         
         i.setVisible(true);
        
-        Servidor servidor = new Servidor();
-        servidor.start(33333);
-        servidor.enviar("Caralho!");
-        
     }
     
     /**
      * Construtor da classe Interface do Projeto GestaoBingo
      */
-    public Interface() {
+    public Interface() throws IOException {
+        
+        servidor = new Servidor();
+        
+        
+        new Thread(){
+            @Override
+            public void run() {
 
+                try {
+                    servidor.start(33333);
+                } catch (IOException ex) {
+                    System.out.println(ex);
+                }
+                
+            }
+        }.start();
+        
+        
+        
+        
         apostador = new HashMap<String, String>();
         listaAposta = new DefaultListModel();
         listaNum = new DefaultListModel();
@@ -428,10 +445,17 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Menu.setVisible(false);
-        setSize(390,500);
-        this.setLocationRelativeTo(null);
-        Apostas.setVisible(true);
+        try {
+            servidor.receber();
+            servidor.enviar("");
+            
+            Menu.setVisible(false);
+            setSize(390,500);
+            this.setLocationRelativeTo(null);
+            Apostas.setVisible(true);
+        } catch (IOException ex) {
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jList1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jList1ComponentAdded
@@ -447,11 +471,16 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        
         //Condição para verificar se houve alguma aposta
         if (jList1.getModel().getSize() == 0) {
             JOptionPane.showMessageDialog(null, "Impossível iniciar sem primeiro apostar", "Erro", 2);
         } else {
+            try {
+                servidor.enviar("comecou");
+            } catch (IOException ex) {
+                
+            }
             //Caso haja alguma aposta desativa a interface Apostas e ativa a interface Jogo
             Apostas.setVisible(false);
             setSize(700, 550);
