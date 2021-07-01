@@ -21,24 +21,12 @@ public class Jogador {
     
     public void start(){
         
-        new Thread(){
-            
-            @Override
-            public void run() {
-                
-                try {
-                    dis = new DataInputStream(s.getInputStream());
-                    dos = new DataOutputStream(s.getOutputStream());
-                    while (true) {
-                        
-                    }
-                    
-                } catch (IOException ex) {
+        try {
+            dis = new DataInputStream(s.getInputStream());
+            dos = new DataOutputStream(s.getOutputStream());
+        } catch (IOException ex) {
 
-                }
-            }
-            
-        }.start();
+        }
         
     }
     
@@ -56,5 +44,6 @@ public class Jogador {
         System.out.println("Enviei: "+msg);
 
     }
+    
     
 }

@@ -4,6 +4,7 @@ package agj;
 import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Vector;
 
 /**
@@ -19,6 +20,8 @@ public class Servidor {
     private ArrayList<DataInputStream> tunelReceber;
     private ArrayList<DataOutputStream> tunelEnvio;
     
+    private Hashtable<String,Double> jogApostas;
+    private int contJog;
     private ArrayList<Socket> listaJogadores;
 
     public Servidor() throws IOException {
@@ -32,15 +35,17 @@ public class Servidor {
         
         tunelReceber = new ArrayList<>();
         tunelEnvio = new ArrayList<>();
+        jogApostas = new Hashtable<>();
         
         System.out.println("[SERVER] Servidor aberto");
+        
         while (true) {            
             
             jogador = ss.accept();
             System.out.println("[SERVER] Jogador conectado " + jogador);
             listaJogadores.add(jogador);
             
-            
+            contJog = 1;
             new Thread(){
                 @Override
                 public void run() {
@@ -52,6 +57,9 @@ public class Servidor {
                         tunelEnvio.add(dos);
                         tunelReceber.add(dis);
                         
+                        String valor = dis.readUTF();
+                        jogApostas.put(String.valueOf(contJog), Double.valueOf(valor));
+                        
                         while (true) {
                             
                         }
@@ -62,6 +70,7 @@ public class Servidor {
                     
                 }
             }.start();
+            contJog++;
         }
         
     }
@@ -87,6 +96,10 @@ public class Servidor {
             System.out.println("Enviei: "+ msg);
         }
 
+    }
+
+    public Hashtable<String, Double> getJogApostas() {
+        return jogApostas;
     }
     
 }

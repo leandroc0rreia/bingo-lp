@@ -1,11 +1,15 @@
 package agj;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -24,13 +28,15 @@ public class Interface extends javax.swing.JFrame {
     private HashMap<String, String> apostador;
     private Numeros n;
     private Servidor servidor;
+    private Timer actu;
     
     public static void main(String[] args) throws IOException {
         
         Interface i = new Interface();
         
         i.setVisible(true);
-       
+        i.setSize(700, 550);
+        
     }
     
     /**
@@ -39,7 +45,15 @@ public class Interface extends javax.swing.JFrame {
     public Interface() throws IOException {
         
         servidor = new Servidor();
+        actu = new Timer(1, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                mostraJogadores();
+                
+            }
         
+        });
         
         new Thread(){
             @Override
@@ -73,7 +87,19 @@ public class Interface extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
-
+    
+    public void mostraJogadores(){
+        Iterator<String> it = servidor.getJogApostas().keySet().iterator();
+        while (it.hasNext()) {
+            String next = it.next();
+            
+            String txt = "Cartão "+next+" - "+servidor.getJogApostas().get(next)+"€";
+            if (!listaAposta.contains(txt)) {
+                listaAposta.addElement(txt);
+            }
+        }
+    }
+    
     /**
      * Código automático gerado pelo JFrame Form
      */
@@ -445,17 +471,13 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            servidor.receber();
-            servidor.enviar("");
-            
-            Menu.setVisible(false);
-            setSize(390,500);
-            this.setLocationRelativeTo(null);
-            Apostas.setVisible(true);
-        } catch (IOException ex) {
-            
-        }
+        actu.start();
+        jList1.setModel(listaAposta);
+        
+        Menu.setVisible(false);
+        setSize(390,500);
+        this.setLocationRelativeTo(null);
+        Apostas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jList1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jList1ComponentAdded
@@ -497,15 +519,23 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        
+        
         //Condição para o limite de números a serem sorteados
         if (jList2.getModel().getSize() == 90) {
             JOptionPane.showMessageDialog(null, "Não existe mais bolas/números a sortear", "Erro", 2);
         } else {
-            n.sortNumero();
-            jLabel5.setText(String.valueOf(n.getNum()));
-            listaNum.addElement(String.valueOf(n.getNum()));
-            jList2.setModel(listaNum);
+            try {
+                n.sortNumero();
+                jLabel5.setText(String.valueOf(n.getNum()));
+                listaNum.addElement(String.valueOf(n.getNum()));
+                jList2.setModel(listaNum);
+                servidor.enviar(String.valueOf(n.getNum()));
+                
+                servidor.receber();
+            } catch (IOException ex) {
+
+            }
         }
 
         //Ao sortear 15 números o botão de terminar o jogo ativa

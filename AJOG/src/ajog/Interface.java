@@ -22,6 +22,7 @@ public class Interface extends javax.swing.JFrame {
     private Sorteador s;
     private Cartao cartaoClass;
     private String[] cartaoDeFora;
+    private String numSort;
     private boolean l1;
     private boolean l2;
     private boolean l3;
@@ -82,6 +83,7 @@ public class Interface extends javax.swing.JFrame {
         this.l1 = false;
         this.l2 = false;
         this.l3 = false;
+        this.numSort = "";
 
         Menu.setVisible(true);
         setSize(607, 500);
@@ -1211,21 +1213,17 @@ public class Interface extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        try {
-            jogador.enviar("");
-            jogador.receber();
-            
-            Menu.setVisible(false);
-            setSize(1068, 550);
-            CriarCartao.setVisible(true);
-            this.setLocationRelativeTo(null);
-            
-            cartaoClass.sortear();
-            for (int i = 0; i < cartao.length; i++) {
-                cartao[i].setText(cartaoClass.ccartao[i]);
-            }
-        } catch (IOException ex) {
-            
+        Menu.setVisible(false);
+        setSize(1068, 550);
+        CriarCartao.setVisible(true);
+        setSize(1068, 550);
+        setLocationRelativeTo(null);
+        setSize(1068, 550);
+        setLocationRelativeTo(null);
+        setSize(1068, 550);
+        cartaoClass.sortear();
+        for (int i = 0; i < cartao.length; i++) {
+            cartao[i].setText(cartaoClass.ccartao[i]);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1303,6 +1301,21 @@ public class Interface extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton5ActionPerformed
+    
+    public void compararNumComCartao() throws IOException{
+        for (int i = 0; i < cartaoToggle.length; i++) {
+            if (cartaoToggle[i].getText().equals(numSort)) {
+                cartaoToggle[i].setEnabled(false);
+                checkcartao++;
+            }
+        }
+        if (checkcartao==15) {
+            //a fazer BINGO - enviar para o servidor
+        }else{
+            jogador.enviar("Recebido");
+        }
+        
+    }
     
     /**
      * Confirmar linha completada
@@ -1598,6 +1611,8 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void ct1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ct1ActionPerformed
+       
+        
         if (ct1.isSelected()) {
             this.checkcartao = checkcartao + 1;
             ct1.setEnabled(false);
@@ -1844,17 +1859,40 @@ public class Interface extends javax.swing.JFrame {
         if ((jTextField1.getText().equals("")) || (Integer.parseInt(jTextField1.getText()) > 1500) || (Integer.parseInt(jTextField1.getText()) <= 0)) {
             JOptionPane.showMessageDialog(null, "Aposte entre 1 e 1500€", "Erro", 2);
         }else{
-            
             try {
-                if (jogador.receber().equals("comecou")) {
-                    Aposta.setVisible(false);
-                    setSize(1068, 395);
-                    setLocationRelativeTo(null);
-                    Jogo.setVisible(true);
+                jogador.enviar(jTextField1.getText());
+                try {
+                    if (jogador.receber().equals("comecou")) {
+                        Aposta.setVisible(false);
+                        setSize(1068, 395);
+                        setLocationRelativeTo(null);
+                        Jogo.setVisible(true);
+                        setSize(1068, 395);
+                        setLocationRelativeTo(null);
+                    }
+                } catch (IOException ex) {
+                    
                 }
             } catch (IOException ex) {
                 
             }
+            
+            new Thread(
+                new Runnable(){
+                @Override
+                    public void run() {
+                        while (true) {                        
+                            try {
+                                numSort = jogador.receber();
+                                compararNumComCartao();
+                            } catch (IOException ex) {
+                               
+                            }
+                        }
+                    }
+                }
+            ).start();
+            
         }
         
 
