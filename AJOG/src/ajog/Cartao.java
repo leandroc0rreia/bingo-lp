@@ -5,7 +5,6 @@
  */
 package ajog;
 
-
 import javax.swing.JOptionPane;
 
 /**
@@ -13,20 +12,23 @@ import javax.swing.JOptionPane;
  * @author leandroc0rreia
  */
 public class Cartao {
-    
+
     private int checkcartao;
     private Sorteador s;
     public String[] ccartao;
 
+    /**
+     * Construtor da classe Cartão
+     */
     public Cartao() {
-        
+
         ccartao = new String[27];
         s = new Sorteador();
         s.sorteioCartao();
         this.checkcartao = 0;
-        
+
     }
-    
+
     /**
      * Define os números sorteados pelas respetivas linhas e colunas do cartão
      */
@@ -47,34 +49,35 @@ public class Cartao {
 
     /**
      * Verifica o intervalo de 1 a 90 por cada posicao
+     *
      * @param c
      * @return boolean
      */
     public boolean verificarNumCartao(String[] c) {
         int check = 0;
-        
+
         for (int i = 0; i < 27; i++) {
-            
+
             if (!(c[i].equals(""))) {
                 if (Integer.parseInt(c[i]) > 1 || Integer.parseInt(c[i]) < 90) {
                     check = check + 1;
                 }
             }
-            
+
         }
-        
-        if (check==15){ 
+
+        if (check == 15) {
             return true;
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Insira números entre 1 e 90", "Erro", 2);
             return false;
         }
-        
+
     }
-    
-    
+
     /**
      * Verifica os espacos em branco por linha
+     *
      * @param c
      * @return boolean
      */
@@ -82,44 +85,44 @@ public class Cartao {
         int linha1 = 0;
         int linha2 = 0;
         int linha3 = 0;
-        
+
         //Verificar espaços em branco na primeira linha
-        for (int i = 0; i < 27; i=i+3) {
+        for (int i = 0; i < 27; i = i + 3) {
             if (c[i].equals("")) {
                 linha1 = linha1 + 1;
             }
         }
-        if (linha1!=4) {
-            JOptionPane.showMessageDialog(null, "A primeira linha não cumpre com 4 espaços em branco", "Erro", 2); 
+        if (linha1 != 4) {
+            JOptionPane.showMessageDialog(null, "A primeira linha não cumpre com 4 espaços em branco", "Erro", 2);
         }
-        
+
         //Verificar espaços em branco na segunda linha
-        for (int i = 1; i < 27; i=i+3) {
+        for (int i = 1; i < 27; i = i + 3) {
             if (c[i].equals("")) {
                 linha2 = linha2 + 1;
             }
         }
-        if (linha2!=4) {
-            JOptionPane.showMessageDialog(null, "A segunda linha não cumpre com 4 espaços em branco", "Erro", 2); 
+        if (linha2 != 4) {
+            JOptionPane.showMessageDialog(null, "A segunda linha não cumpre com 4 espaços em branco", "Erro", 2);
         }
-        
+
         //Verificar espaços em branco na terceira linha
-        for (int i = 2; i < 27; i=i+3) {
+        for (int i = 2; i < 27; i = i + 3) {
             if (c[i].equals("")) {
                 linha3 = linha3 + 1;
             }
         }
-        if (linha3!=4) {
-            JOptionPane.showMessageDialog(null, "A terceira linha não cumpre com 4 espaços em branco", "Erro", 2); 
+        if (linha3 != 4) {
+            JOptionPane.showMessageDialog(null, "A terceira linha não cumpre com 4 espaços em branco", "Erro", 2);
         }
-        
+
         //Verificação final das 3 linhas
-        if (linha1==4 && linha2==4 && linha3==4) {
+        if (linha1 == 4 && linha2 == 4 && linha3 == 4) {
             return true;
-        }else{
+        } else {
             return false;
         }
-            
+
     }
 
     /**
@@ -232,28 +235,31 @@ public class Cartao {
         }
 
     }
-    
+
     /**
      * Verifica se todos os metodos sao verdadeiros para se iniciar o jogo
+     *
      * @param c
      * @return boolean
      */
-    public boolean prontoAJogar(String[] c){
-        
-        if ((verificarNumCartao(c)== true) && (verificarEspacosBranco(c) == true) && (verificarNumColuna(c) == true) && (verificarRepetido(c) == true)) {
+    public boolean prontoAJogar(String[] c) {
+
+        if ((verificarNumCartao(c) == true) && (verificarEspacosBranco(c) == true) && (verificarNumColuna(c) == true) && (verificarRepetido(c) == true)) {
             return true;
-        }else{
+        } else {
             return false;
         }
-        
+
     }
-    
+
     /**
-     * Recebe uma String[] vinda do exterior. Neste caso é indicado que seja um cartao.
-     * @param cartaoFora 
+     * Recebe uma String[] vinda do exterior. Neste caso é indicado que seja um
+     * cartao.
+     *
+     * @param cartaoFora
      */
-    public void receberCcartao(String[] cartaoFora){
-        
+    public void receberCcartao(String[] cartaoFora) {
+
         for (int i = 0; i < 27; i++) {
             ccartao[i].equals(cartaoFora[i]);
         }

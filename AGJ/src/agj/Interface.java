@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -29,57 +29,47 @@ public class Interface extends javax.swing.JFrame {
     private Numeros n;
     private Servidor servidor;
     private Timer actu;
-    
+    private int numVencedores;
+    private boolean thread;
+    private Thread thr;
+//    private Hashtable<String, String> apostaHash;
+
     public static void main(String[] args) throws IOException {
-        
+
         Interface i = new Interface();
-        
+
         i.setVisible(true);
         i.setSize(700, 550);
-        
+
     }
-    
+
     /**
      * Construtor da classe Interface do Projeto GestaoBingo
      */
     public Interface() throws IOException {
-        
+
+        thread = true;
         servidor = new Servidor();
-        actu = new Timer(1, new ActionListener(){
+        actu = new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                mostraJogadores();
-                
-            }
-        
-        });
-        
-        new Thread(){
-            @Override
-            public void run() {
 
-                try {
-                    servidor.start(33333);
-                } catch (IOException ex) {
-                    System.out.println(ex);
-                }
-                
+                mostraJogadores();
+
             }
-        }.start();
-        
-        
-        
-        
+
+        });
+
         apostador = new HashMap<String, String>();
         listaAposta = new DefaultListModel();
         listaNum = new DefaultListModel();
         n = new Numeros();
+        numVencedores = 0;
 
         initComponents();
 
         Vencedor.setVisible(false);
-        QuemGanhou.setVisible(false);
+
         Jogo.setVisible(false);
         Apostas.setVisible(false);
         Menu.setVisible(true);
@@ -87,19 +77,22 @@ public class Interface extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
-    
-    public void mostraJogadores(){
+
+    /**
+     * Adiciona o número do cartão e o valor que apostaram
+     */
+    public void mostraJogadores() {
         Iterator<String> it = servidor.getJogApostas().keySet().iterator();
         while (it.hasNext()) {
             String next = it.next();
-            
-            String txt = "Cartão "+next+" - "+servidor.getJogApostas().get(next)+"€";
+
+            String txt = "Cartão " + next + " - " + servidor.getJogApostas().get(next) + "€";
             if (!listaAposta.contains(txt)) {
                 listaAposta.addElement(txt);
             }
         }
     }
-    
+
     /**
      * Código automático gerado pelo JFrame Form
      */
@@ -121,18 +114,10 @@ public class Interface extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        QuemGanhou = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
-        jLabel6 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         Vencedor = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bingo v2.0 - Gestor");
@@ -200,11 +185,6 @@ public class Interface extends javax.swing.JFrame {
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jList1.setToolTipText("");
         jList1.setEnabled(false);
-        jList1.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jList1ComponentAdded(evt);
-            }
-        });
         jScrollPane1.setViewportView(jList1);
 
         jButton3.setBackground(java.awt.Color.white);
@@ -259,15 +239,6 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
-        jButton5.setText("Terminar Jogo");
-        jButton5.setEnabled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout JogoLayout = new javax.swing.GroupLayout(Jogo);
         Jogo.setLayout(JogoLayout);
         JogoLayout.setHorizontalGroup(
@@ -275,16 +246,15 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(JogoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(JogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JogoLayout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JogoLayout.createSequentialGroup()
+                    .addGroup(JogoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150))))
+                        .addGap(150, 150, 150))
+                    .addGroup(JogoLayout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         JogoLayout.setVerticalGroup(
             JogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,78 +263,16 @@ public class Interface extends javax.swing.JFrame {
                     .addGroup(JogoLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addGroup(JogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JogoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51))
         );
 
-        jList3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jList3.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jList3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList3MouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(jList3);
-
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
-        jLabel6.setText("Quem ganhou?");
-
-        jButton6.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
-        jButton6.setText("Confirmar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout QuemGanhouLayout = new javax.swing.GroupLayout(QuemGanhou);
-        QuemGanhou.setLayout(QuemGanhouLayout);
-        QuemGanhouLayout.setHorizontalGroup(
-            QuemGanhouLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QuemGanhouLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(220, 220, 220))
-            .addGroup(QuemGanhouLayout.createSequentialGroup()
-                .addGroup(QuemGanhouLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(QuemGanhouLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(QuemGanhouLayout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        QuemGanhouLayout.setVerticalGroup(
-            QuemGanhouLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QuemGanhouLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel6)
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-
         jLabel7.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
-        jLabel7.setText("Parabéns!");
-
-        jLabel8.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        jLabel10.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setText("vamos começar outro!");
 
         jButton7.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButton7.setText("Voltar ao Inicio");
@@ -374,40 +282,35 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
+        jLabel11.setText("Acabou o jogo,");
+
         javax.swing.GroupLayout VencedorLayout = new javax.swing.GroupLayout(Vencedor);
         Vencedor.setLayout(VencedorLayout);
         VencedorLayout.setHorizontalGroup(
             VencedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VencedorLayout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VencedorLayout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addGroup(VencedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(VencedorLayout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jLabel7))
-                    .addGroup(VencedorLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addGroup(VencedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(VencedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(VencedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(VencedorLayout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VencedorLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel11)
+                        .addGap(72, 72, 72)))
+                .addGap(86, 86, 86))
         );
         VencedorLayout.setVerticalGroup(
             VencedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VencedorLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addContainerGap(177, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(116, 116, 116))
         );
@@ -429,11 +332,6 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(QuemGanhou, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(Vencedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -452,11 +350,6 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(QuemGanhou, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(Vencedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -471,29 +364,40 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        thr = new Thread() {
+            @Override
+            public void run() {
+
+                try {
+                    servidor.start(33333);
+                } catch (IOException ex) {
+                    System.out.println(ex);
+                }
+
+            }
+        };
+        thr.start();
+
         actu.start();
         jList1.setModel(listaAposta);
-        
+
         Menu.setVisible(false);
-        setSize(390,500);
+        setSize(390, 500);
         this.setLocationRelativeTo(null);
         Apostas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jList1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jList1ComponentAdded
-
-    }//GEN-LAST:event_jList1ComponentAdded
-
     /**
      * Ao pressionar o botão desativa a interface Apostas e ativa a interface
      * Jogo Na ausência de informação de como saber o tamanho da lista, tirei
-     * como referência o código do website indicado abaixo
-     * Link: https://forums.codeguru.com/showthread.php?35883-How-to-test-if-JList-is-empty
+     * como referência o código do website indicado abaixo Link:
+     * https://forums.codeguru.com/showthread.php?35883-How-to-test-if-JList-is-empty
      *
      * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
         //Condição para verificar se houve alguma aposta
         if (jList1.getModel().getSize() == 0) {
             JOptionPane.showMessageDialog(null, "Impossível iniciar sem primeiro apostar", "Erro", 2);
@@ -501,13 +405,17 @@ public class Interface extends javax.swing.JFrame {
             try {
                 servidor.enviar("comecou");
             } catch (IOException ex) {
-                
+
             }
             //Caso haja alguma aposta desativa a interface Apostas e ativa a interface Jogo
             Apostas.setVisible(false);
             setSize(700, 550);
             this.setLocationRelativeTo(null);
+            setSize(700, 550);
+            this.setLocationRelativeTo(null);
             Jogo.setVisible(true);
+            setSize(700, 550);
+            this.setLocationRelativeTo(null);
         }
 
 
@@ -519,73 +427,42 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-        
-        //Condição para o limite de números a serem sorteados
-        if (jList2.getModel().getSize() == 90) {
-            JOptionPane.showMessageDialog(null, "Não existe mais bolas/números a sortear", "Erro", 2);
-        } else {
-            try {
-                n.sortNumero();
-                jLabel5.setText(String.valueOf(n.getNum()));
-                listaNum.addElement(String.valueOf(n.getNum()));
-                jList2.setModel(listaNum);
-                servidor.enviar(String.valueOf(n.getNum()));
-                
-                servidor.receber();
-            } catch (IOException ex) {
 
+        try {
+            n.sortNumero();
+            jLabel5.setText(String.valueOf(n.getNum()));
+            listaNum.addElement(String.valueOf(n.getNum()));
+            jList2.setModel(listaNum);
+            servidor.enviar(String.valueOf(n.getNum()));
+
+            Vector<String> respostas = servidor.receber();
+
+            for (int i = 0; i < respostas.size(); i++) {
+                if (respostas.get(i).equals("fizbingo")) {
+
+                    try {
+                        numVencedores++;
+                        Thread.sleep((long) 0.5);
+                        //                    servidor.receber();
+                        servidor.enviar("bingo");
+                        Jogo.setVisible(false);
+                        Vencedor.setVisible(true);
+
+                        servidor.somaVencedor(numVencedores);
+                        servidor.enviar(String.valueOf(servidor.totalApostas()));
+                    } catch (IOException ex) {
+
+                    } catch (InterruptedException ex) {
+
+                    }
+                }
             }
-        }
 
-        //Ao sortear 15 números o botão de terminar o jogo ativa
-        if (jList2.getModel().getSize() == 15) {
-            jButton5.setEnabled(true);
+        } catch (IOException ex) {
+
         }
 
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    /**
-     * Ao pressionar desativa a interface Jogo e ativa a interface QuemGanhou
-     *
-     * @param evt
-     */
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Jogo.setVisible(false);
-        QuemGanhou.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
-
-    }//GEN-LAST:event_jList3MouseClicked
-
-    /**
-     * Ao pressionar o botão desativa a interface QuemGanhhou e ativa a
-     * interface Vencedor. Verificando se existe um apostador selecionado
-     *
-     * @param evt
-     */
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
-        //Condição para ver se existe um apostador selecionado
-        if (jList3.getSelectedValue() == null) {
-            JOptionPane.showMessageDialog(null, "Selecione o vencedor", "Erro", 2);
-        } else {
-            QuemGanhou.setVisible(false);
-
-            jLabel8.setText(String.valueOf(jList3.getSelectedValue()) + " ganhou o jogo do bingo com uma aposta de " + apostador.get(jList3.getSelectedValue()) + "€.");
-
-            //Soma do ganho total do apostador
-            int total = 0;
-            for (String key : apostador.keySet()) {
-                total = total + Integer.parseInt(apostador.get(key));
-            }
-            jLabel10.setText("Ganho total: " + total + "€");
-
-            Vencedor.setVisible(true);
-        }
-
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * Ao pressionar o Botão coloca os campos no seu estado inicial. Desativa a
@@ -594,16 +471,34 @@ public class Interface extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Thread.interrupted();
+//        for (Thread t : Thread.getAllStackTraces().keySet()){  
+//            if (t.getState()==Thread.State.RUNNABLE) t.interrupt(); 
+//        }
+        thr.interrupt();
+        thread = false;
+
         Vencedor.setVisible(false);
 
+        numVencedores = 0;
         apostador.clear();
+        servidor.removeJogadores();
+        try {
+            servidor.resetVariaveis();
+        } catch (IOException ex) {
+
+        }
         listaAposta.clear();
         listaNum.clear();
         n.apagarLista();
-        jButton5.setEnabled(false);
         jLabel5.setText("");
 
+        setSize(700, 550);
+        this.setLocationRelativeTo(null);
         Menu.setVisible(true);
+        setSize(700, 550);
+        this.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -620,28 +515,20 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JPanel Apostas;
     private javax.swing.JPanel Jogo;
     private javax.swing.JPanel Menu;
-    private javax.swing.JPanel QuemGanhou;
     private javax.swing.JPanel Vencedor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
